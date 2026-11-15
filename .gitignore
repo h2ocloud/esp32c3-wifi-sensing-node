@@ -18,3 +18,8 @@ build/
 __pycache__/
 *.pyc
 .DS_Store
+
+# 大檔：STEP 與 G-code 附在 GitHub Release，不進 git
+*.step
+*.stp
+*.gcode

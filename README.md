@@ -1,7 +1,8 @@
 # MOD-WIFI：Wi-Fi 偵測節點（ESP32-C3＋ESPectre＋溫濕度氣壓＋紅外線控制日立冷氣）
 
 > **狀態：韌體編譯通過、靜態檢查通過，尚未實機驗證。**
-> 零件還在路上；本 repo 沒有任何實機量測數字。外殼也還沒印出來。
+> 零件還在路上；本 repo 沒有任何實機量測數字。外殼（R2）也還沒印出來。
+> 製作過程邊做邊記在 [`docs/JOURNAL.md`](docs/JOURNAL.md)。
 
 用家裡的 Wi-Fi 訊號偵測「空間裡有沒有東西在動」（入侵、狗的夜間活動、睡覺時的身體動作），同時量溫度、濕度、氣壓，並且**紅外線控制日立冷氣（遙控器 RF11T1）**。全部接進 Home Assistant，也提供 HTTP JSON 與 Prometheus `/metrics`。
 
@@ -9,12 +10,12 @@
 - 感測：AHT20（溫濕度）＋BMP280（氣壓）二合一 I²C 模組
 - 動作偵測：[ESPectre](https://github.com/francescopace/espectre)（Wi-Fi CSI），透過 ESPHome 2026.10 起內建的 `espectre` 元件
 - 冷氣：940 nm 紅外線 LED 經 NPN 電晶體驅動＋VS1838B 接收頭（**必備**）；ESPHome `climate: hitachi_ac344`（RF11T1 在文獻上對應日立 AC344 格式，**待實機確認**）
-- 外殼：兩件式滑蓋殼（OpenSCAD），PLA 黑殼身＋白滑蓋，免支撐
+- 外殼：兩件式滑蓋殼 R2（OpenSCAD），PLA 黑殼身＋白滑蓋，免支撐；[Onshape 公開文件（R2）](https://cad.onshape.com/documents/20e3a641bf055fec6fb69fdc/w/8c8c83e86c0f45c5d3bed645/e/2099ef07d5082cb81859d333)
 
 ![外殼算繪圖](cad/img/01_iso_closed.png)
 
 <!-- CAD-README-NOTE -->
-> 外殼目前放的是 **R1（暫用）**；R2 修訂版（黑白配色、紅外線 LED 與接收頭開口）完成後會更新 `cad/`。
+> 外殼為 **R2**（黑色殼身、白色滑蓋，上端有 IR 發射窗與 VS1838B 接收窗）；尚未印出實物驗證。列印順序見 [`cad/PRINT_ORDER.md`](cad/PRINT_ORDER.md)。
 
 ---
 
@@ -24,9 +25,9 @@
 |---|---|---|
 | `firmware/` | ESPHome 設定檔 `wifi-node.yaml`、錄碼用 `ir-learn.yaml`、共用的紅外線硬體套件、選配套件、`secrets.example.yaml` | GPL-3.0-only |
 | `wiring/` | 腳位表（md＋csv）、彩色接線圖（PNG＋SVG）、紅外線電路圖、檢查清單、產生腳本 | CERN-OHL-P-2.0（自繪元件圖 CC0-1.0） |
-| `cad/` | OpenSCAD 原始檔、STL（組裝座標與列印姿態）、算繪圖 | CERN-OHL-P-2.0 |
+| `cad/` | 外殼 R2：OpenSCAD 原始檔、STL（組裝座標與列印姿態）、算繪圖、GLB、列印順序、組裝說明（STEP 與 G-code 在 Release） | CERN-OHL-P-2.0 |
 | `bom/` | 零件表（通用規格，不含價格與購買來源） | CERN-OHL-P-2.0 |
-| `docs/` | 架構、韌體、API、日立紅外線協定與逐鍵錄碼、列印、授權、安全 | 見 `docs/licensing.md` |
+| `docs/` | 架構、韌體、API、日立紅外線協定與逐鍵錄碼、列印、授權、安全、製作紀錄（`JOURNAL.md`）、維護流程（`MAINTAINING.md`） | 見 `docs/licensing.md` |
 | `LICENSES/` | 各授權全文 | — |
 
 ## 能做什麼／不能做什麼（請先讀）
@@ -86,10 +87,20 @@
 
 ## 3D 列印
 
-- FDM（作者用 Ender-3 級 220 × 220 熱床）、PLA、Cura「Low」0.28 mm 層高、2 道牆、**免支撐**。
-- 殼身黑色（黑盤）、滑蓋白色（白盤）；建議 5 mm brim，但滑蓋彈片切縫內不能有 brim。
-- 列印順序與印完的檢查：[`docs/PRINTING.md`](docs/PRINTING.md)。
-- 壁掛方向：感測端朝下、滑蓋往上推出；感測器在下格、板子在上格、天線端淨空。
+> 狀態：CAD 自動檢查與切片軟體估計；**尚未實際印出驗證**。
+
+本模組和姊妹專案「兒童 AI 問答機」（[mod-ask-kids-ai](https://github.com/h2ocloud/mod-ask-kids-ai)）的外殼**排在同一組兩盤一起印**，只要換一次線材：
+
+| 順序 | 顏色 | 本模組的件 | 切片軟體估計（整盤，含問答機的件） |
+|---|---|---|---|
+| 1 | 白 PLA | 滑蓋 | 約 10 h、90 g |
+| 2 | 黑 PLA | 殼身、兩條頂壓條、3 mm LED 轉接套 ×2 | 約 11.5 h、100 g |
+
+- 通用條件：FDM（作者用 Ender-3 級 220 × 220 熱床）、0.4 mm 噴嘴、PLA、Cura「Low」0.28 mm 層高、2 道牆、**免支撐**、5 mm brim（滑蓋周圍與彈片切縫不留 brim）、**第 1–3 層風扇關閉**。
+- 只印本模組：用 `cad/stl/plate/WIFI_WHITE.stl`、`WIFI_BLACK.stl` 自己切片；零件到貨後可先印試配片 `WIFI_COUPON.stl`（約 30 分鐘）。
+- 完整順序、為什麼白盤先印、印完先檢查什麼：[`cad/PRINT_ORDER.md`](cad/PRINT_ORDER.md)；組裝步驟：[`cad/ASSEMBLY.md`](cad/ASSEMBLY.md)（IR 腳位以 `wiring/` 為準，見該文件開頭）。
+- 兩盤 G-code（作者那台印表機的切片結果，換印表機請用 STL 自己切）與 STEP 附在 [Release v0.1.0](https://github.com/h2ocloud/esp32c3-wifi-sensing-node/releases/tag/v0.1.0)。
+- 壁掛方向：感測端朝下、IR 端朝上；滑蓋往上推出。上方要留約 70 mm 才能把滑蓋整個抽出。
 
 ## 韌體
 
@@ -138,5 +149,7 @@ esphome run wifi-node.yaml             # 第一次用 USB 燒錄；之後可 OTA
 **Status: firmware compiles (ESPHome 2026.10.2, ESP-IDF 5.5.6); not yet tested on real hardware.**
 
 Limitations: CSI only detects *that something moves* — it cannot tell a person from a dog, it is not sleep staging, and it is not a medical or security-grade device. It needs a stable 2.4 GHz AP, covers one room per node, and must stay still during calibration. IR control is one-way (no AC state feedback; the receiver only tracks what the remote sent), needs line of sight, and the protocol must be confirmed on the actual unit.
+
+Case: two-part sliding-lid enclosure, revision R2 (black body, white lid, IR LED and VS1838B windows), printed together with the sister project [mod-ask-kids-ai](https://github.com/h2ocloud/mod-ask-kids-ai) on two shared plates (PLA, 0.28 mm, no supports); not printed yet. STEP and G-code are attached to [Release v0.1.0](https://github.com/h2ocloud/esp32c3-wifi-sensing-node/releases/tag/v0.1.0). A build journal is kept in `docs/JOURNAL.md`.
 
 License: firmware GPL-3.0-only (because of ESPectre/ESPHome); hardware (CAD, wiring, BOM) CERN-OHL-P-2.0; self-drawn part graphics CC0-1.0.

@@ -3,7 +3,7 @@ item,part,qty,spec,group,source_or_note
 2,AHT20+BMP280 I2C module,1,"~16x16 mm, 4 pins VDD/SDA/GND/SCL (check silkscreen), powered from 3.3V, AHT20 0x38, BMP280 0x77 or 0x76",core,"Aosong AHT20 datasheet; Bosch BMP280 datasheet; module details TBD"
 3,Dupont wires F-F or 26-28 AWG wire,4,"red 3V3, black GND, blue SDA, yellow SCL (suggested)",core,"follow silkscreen, not wire colour"
 4,USB-C data cable + 5V charger,1,"5V >=1A",core,
-5,PLA filament 1.75 mm,1,"black (body), white (lid)",core,"amount TBD from R2 slicing"
+5,PLA filament 1.75 mm,1,"black (body), white (lid)",core,"about 32.5 g for this module (white lid ~6 g + black parts ~26.5 g; slicer estimate)"
 6,M3 pan-head screw + wall plug,2,"head <=7.0 mm dia, <=2.4 mm high",optional,"wall mount"
 7,Rubber feet,4,"~7.9 x 2.2 mm",optional,"standing"
 8,IR LED 940 nm 5 mm,1,"Vf ~1.2-1.4V, ~100 mA pulse; buy 2",ir,"model unconfirmed - check datasheet; use 47-68 ohm if max current <100 mA"

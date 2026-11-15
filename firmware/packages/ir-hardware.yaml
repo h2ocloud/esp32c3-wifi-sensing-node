@@ -3,6 +3,8 @@
 #   發射：GPIO3 → 1 kΩ → NPN（S8050／2N2222）基極；LED 從 USB 5V 經 33 Ω 到集極（見 wiring/PINMAP.md）
 #   接收：VS1838B（38 kHz）OUT → GPIO10，VCC→3V3、GND→GND（必備：首次設定要用它確認協定）
 # ESP32-C3 的 RMT 有 2 個 TX＋2 個 RX 通道；這裡各用 1 個。ESPectre 不使用 RMT。
+# 外殼 R2 的組裝文件以 GPIO7（發射）／GPIO6（接收）舉例；本專案以下面這兩支為準（已編譯、接線圖一致）。
+# 若要照 R2 文件接 GPIO7／GPIO6，只改下面兩行即可（該組合也已編譯驗證，見 qa/compile-esphome.txt 的 r2pins）。
 substitutions:
   ir_tx_pin: GPIO3
   ir_rx_pin: GPIO10
