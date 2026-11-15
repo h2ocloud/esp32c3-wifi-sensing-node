@@ -116,3 +116,9 @@ secret 掃描擴大到 G-code、STEP 與 Release 附檔，最後 0 命中（153 
 ### 11/15（日）20:56｜AI｜Claude Opus 工作分頁
 上線前最後一次看封面，發現封面圖上還寫著「大金紅外線」（下午改成日立時漏改；文字在圖片裡，掃描抓不到）→ 改成「日立冷氣紅外線」並重產封面。
 - 教訓：圖片裡的文字要用眼睛看，不能只靠文字掃描。
+
+### 11/15（日）21:01｜AI｜Claude Opus 工作分頁
+階段 B 上線完成：公開 GitHub repo（main、tag v0.1.0、Release 附 STL 壓縮檔／兩盤 G-code／STEP）與 ToolHub 新工具都已上線。
+- 上線後驗證 15/15：帶 Host 的公開網址、縮圖與 favicon、zip 22 個檔、線上 3D 檢視器、GitHub 匿名開啟與 README 圖片。
+- 線上頁比上傳檔多一段平台注入的「回 ToolHub」按鈕，扣掉後逐字相同。
+- 這一筆是第一次用 journal_append.sh 以同一個工具 id 加法更新。
