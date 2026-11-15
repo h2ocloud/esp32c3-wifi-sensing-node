@@ -32,6 +32,9 @@ tools/journal_append.sh now 採購 "ESP32-C3 與感測板到貨。BMP280 模組�
 
 先演練不上傳：`DRY_RUN=1 tools/journal_append.sh …`；只更新頁面、先不 push：`NO_PUSH=1 tools/journal_append.sh …`。
 
+若停在第 3 步（掃描有命中）或第 4 步：紀錄已經追加了，修正後用**同樣參數**加 `SKIP_APPEND=1` 重跑，就不會重複追加。
+姊妹專案的 ToolHub 頁是公開網址，掃描只放行 `publish/sister.json` 記錄的那一條（其他 ToolHub 網址仍算命中）。
+
 ## 2. 不是只有紀錄的改動
 
 外殼改版、韌體或腳位調整、頁面其他章節修改，**不要用上面的加法更新**（差異檢查會擋下來）。改走完整流程：
