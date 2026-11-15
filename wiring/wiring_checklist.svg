@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2226" viewBox="0 0 1600 2226" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei','Heiti TC','Noto Sans CJK TC',sans-serif">
+<title>接線檢查清單</title>
+<desc>ESP32-C3 SuperMini + AHT20/BMP280 + IR 的接線檢查清單，每項附勾選框。</desc>
+<defs></defs>
+<rect x="0" y="0" width="1600" height="2226" fill="#ffffff"/>
+<text x="60" y="92" font-size="46" font-weight="700" fill="#1a1a1a" text-anchor="start" >接線檢查清單</text>
+<text x="60" y="140" font-size="26" font-weight="400" fill="#4f5963" text-anchor="start" >ESP32-C3 SuperMini＋AHT20/BMP280＋紅外線控制日立（Hitachi）冷氣（遙控器 RF11T1）</text>
+<rect x="60" y="200" width="1480" height="56" rx="10" fill="#f1f3f5" stroke="none" stroke-width="0" />
+<rect x="60" y="200" width="12" height="56" rx="4" fill="#495057" stroke="none" stroke-width="0" />
+<text x="92" y="239" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >接線前</text>
+<rect x="84" y="280" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="316" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >1</text>
+<text x="196" y="316" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >先拔掉 USB（斷電）再接線、改線</text>
+<rect x="84" y="360" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="396" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >2</text>
+<text x="196" y="396" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >對腳看絲印，不要看線色</text>
+<text x="196" y="438" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >線色只是建議；杜邦線每包顏色不同，以絲印與腳位為準</text>
+<rect x="60" y="488" width="1480" height="56" rx="10" fill="#f1f3f5" stroke="none" stroke-width="0" />
+<rect x="60" y="488" width="12" height="56" rx="4" fill="#1971c2" stroke="none" stroke-width="0" />
+<text x="92" y="527" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >感測板 AHT20+BMP280（I²C）</text>
+<rect x="84" y="568" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="604" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >3</text>
+<text x="196" y="604" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" ><tspan >VDD → </tspan><tspan fill="#c92a2a" font-weight="700">3V3</tspan><tspan >（右排 #3），不是 5V</tspan></text>
+<text x="196" y="646" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >接 5V 會讓模組上的上拉把 5V 灌進 GPIO</text>
+<rect x="84" y="680" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="716" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >4</text>
+<text x="196" y="716" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" ><tspan >GND → </tspan><tspan font-weight="700">GND</tspan><tspan >（右排 #2）</tspan></text>
+<rect x="84" y="760" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="796" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >5</text>
+<text x="196" y="796" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" ><tspan >SDA → </tspan><tspan fill="#1864ab" font-weight="700">GPIO4</tspan><tspan >（右排 #4）</tspan></text>
+<rect x="84" y="840" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="876" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >6</text>
+<text x="196" y="876" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" ><tspan >SCL → </tspan><tspan fill="#8a6100" font-weight="700">GPIO5</tspan><tspan >（左排 #1）</tspan></text>
+<rect x="60" y="936" width="1480" height="56" rx="10" fill="#f1f3f5" stroke="none" stroke-width="0" />
+<rect x="60" y="936" width="12" height="56" rx="4" fill="#7048e8" stroke="none" stroke-width="0" />
+<text x="92" y="975" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >紅外線發射／接收</text>
+<rect x="84" y="1016" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="1052" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >7</text>
+<text x="196" y="1052" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >IR LED 長腳＝陽極（接 33 Ω／5V 側），短腳＝陰極（接電晶體 C）</text>
+<text x="196" y="1094" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >陰極那側的塑膠外緣有平邊；以實物為準</text>
+<rect x="84" y="1128" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="1164" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >8</text>
+<text x="196" y="1164" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >電晶體 E／B／C 以實物 datasheet 為準</text>
+<text x="196" y="1206" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >S8050、PN2222A 常見 E-B-C；P2N2222A 是 C-B-E（平面朝自己、腳朝下由左到右）</text>
+<rect x="84" y="1240" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="1276" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >9</text>
+<text x="196" y="1276" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" ><tspan >33 Ω 串在 </tspan><tspan fill="#c2410c" font-weight="700">5V</tspan><tspan >（右排 #1）→ LED 的路徑上</tspan></text>
+<text x="196" y="1318" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >1 kΩ 串在 GPIO3（右排 #5）→ 電晶體基極 B</text>
+<rect x="84" y="1352" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="1388" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >10</text>
+<text x="196" y="1388" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" ><tspan >接收頭 VS1838B（必備）VCC → </tspan><tspan fill="#c92a2a" font-weight="700">3V3</tspan><tspan >，不接 5V</tspan></text>
+<text x="196" y="1430" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >OUT → GPIO10（左排 #6）；避開陽光／日光燈直射，離 IR LED 遠一點或加遮擋</text>
+<rect x="84" y="1464" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="1500" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >11</text>
+<text x="196" y="1500" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >IR LED 對準冷氣的接收窗，中間不要擋住</text>
+<text x="196" y="1542" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >需視線可達；外殼開孔對準 LED</text>
+<rect x="84" y="1576" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="1612" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >12</text>
+<text x="196" y="1612" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >線不要經過天線端</text>
+<text x="196" y="1654" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >天線在 USB 對側短邊；天線前方約 8 mm 內不放線、不放金屬</text>
+<rect x="60" y="1704" width="1480" height="56" rx="10" fill="#f1f3f5" stroke="none" stroke-width="0" />
+<rect x="60" y="1704" width="12" height="56" rx="4" fill="#2f9e44" stroke="none" stroke-width="0" />
+<text x="92" y="1743" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >通電前／通電後</text>
+<rect x="84" y="1784" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="1820" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >13</text>
+<text x="196" y="1820" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >通電前：三用電表量 3V3 對 GND、5V 對 GND，都不應導通</text>
+<text x="196" y="1862" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >剛碰到時嗶一下是電容充電；一直響才是短路，先不要插 USB</text>
+<rect x="84" y="1896" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="1932" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >14</text>
+<text x="196" y="1932" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >通電後：看開機 log 的 I²C 掃描，應出現 0x38 與 0x76 或 0x77</text>
+<text x="196" y="1974" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >0x38＝AHT20；0x77 或 0x76＝BMP280（看 SDO 接法）</text>
+<rect x="84" y="2008" width="46" height="46" rx="6" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="160" y="2044" font-size="28" font-weight="700" fill="#4f5963" text-anchor="middle" >15</text>
+<text x="196" y="2044" font-size="30" font-weight="700" fill="#1a1a1a" text-anchor="start" >通電後：用遙控器（RF11T1）對著接收頭按鍵，log 應出現解碼或 raw 輸出</text>
+<text x="196" y="2086" font-size="24" font-weight="400" fill="#4f5963" text-anchor="start" >用來錄遙控碼、確認協定；沒有任何輸出先查 OUT 是否接 GPIO10、VCC 是否接 3V3</text>
+<text x="60" y="2186" font-size="22" font-weight="400" fill="#4f5963" text-anchor="start" >對照：wiring_main.svg、wiring_ir.svg、PINMAP.md</text>
+<text x="1540" y="2186" font-size="22" font-weight="400" fill="#4f5963" text-anchor="end" >授權：CERN-OHL-P-2.0</text>
+</svg>

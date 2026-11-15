@@ -1,0 +1,24 @@
+MOD-WIFI — Wi-Fi sensing node (ESP32-C3 + ESPectre + AHT20/BMP280 + Hitachi IR)
+Copyright (c) 2026 MOD-WIFI contributors
+
+This repository contains parts under different licenses:
+
+  firmware/                         GPL-3.0-only      (LICENSES/GPL-3.0-only.txt)
+  cad/, wiring/, bom/               CERN-OHL-P-2.0    (LICENSES/CERN-OHL-P-2.0.txt)
+  self-drawn part graphics in
+  wiring/ (board, module, NPN,
+  LED, receiver artwork)            CC0-1.0           (LICENSES/CC0-1.0.txt)
+  docs/                             see docs/licensing.md
+
+Why GPL-3.0-only for the firmware: it is built with ESPHome's `espectre`
+component and the ESPectre SDK (francescopace/espectre, GPL-3.0-only), and with
+ESPHome's C++ runtime (GPLv3). A distributed firmware image is a single combined
+work and must be licensed as a whole under GPLv3, with complete corresponding
+source. The firmware configuration in this repository is therefore released
+under GPL-3.0-only, matching upstream.
+
+Each file may also carry an SPDX-License-Identifier header; where present, it
+applies to that file. Third-party notices: NOTICE.md.
+
+授權總則（中文）：韌體 GPL-3.0-only；硬體（外殼、接線、BOM）CERN-OHL-P-2.0；
+自繪元件圖 CC0-1.0。理由見 docs/licensing.md。

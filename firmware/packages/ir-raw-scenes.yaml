@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: GPL-3.0-only
+# 備案：如果 hitachi_ac344 解不出或發射後冷氣沒反應，改用「學習到的固定情境碼」。
+# 步驟：燒 ir-learn.yaml → 拿原本的遙控器對著接收頭按 → 從 log 複製 raw（Received Raw: ...）
+#       或 pronto（Received Pronto: ...）→ 貼到下面對應的 code／data → 在 wifi-node.yaml 打開本套件。
+# 限制：每個按鈕只會送「錄下來那一刻的完整狀態」（例如 冷氣 24 °C 自動風），不是可調的 climate；
+#       Home Assistant 也不會知道冷氣目前的狀態。
+# 下面的 code／data 都是「佔位」示範格式，不是你的遙控碼：不換掉就按，冷氣不會有反應。
+button:
+  - platform: template
+    name: AC Scene Cool 24 (learned)
+    on_press:
+      - remote_transmitter.transmit_raw:
+          transmitter_id: ir_tx
+          carrier_frequency: 38kHz
+          # 佔位：換成 ir-learn 錄到的 raw（正數＝亮 µs、負數＝暗 µs）
+          code: [3300, -1700, 400, -1250, 400, -500, 400, -100000]
+  - platform: template
+    name: AC Scene Off (learned)
+    on_press:
+      - remote_transmitter.transmit_pronto:
+          transmitter_id: ir_tx
+          # 佔位：換成 ir-learn 錄到的 pronto 字串
+          data: "0000 006D 0002 0000 0080 0040 0010 0030 0010 0010"

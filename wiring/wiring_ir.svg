@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1910" viewBox="0 0 2400 1910" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei','Heiti TC','Noto Sans CJK TC',sans-serif">
+<title>紅外線電路放大圖</title>
+<desc>GPIO3 經 1 kΩ 驅動 NPN（S8050 或 2N2222），5V 經 33 Ω 與 940 nm IR LED 到集極；VS1838B 接收頭（必備）接 GPIO10。用於紅外線控制日立（Hitachi）冷氣（遙控器 RF11T1）。零件圖自繪，CC0-1.0。</desc>
+<defs><pattern id="hatchAvoid" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#c7ccd1"/><rect width="4" height="10" fill="#6c757d"/></pattern><pattern id="hatchKeep" patternUnits="userSpaceOnUse" width="22" height="22" patternTransform="rotate(45)"><rect width="22" height="22" fill="#fff5f5"/><rect width="6" height="22" fill="#ffc9c9"/></pattern><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/></marker><marker id="arrowIR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7048e8"/></marker></defs>
+<rect x="0" y="0" width="2400" height="1910" fill="#ffffff"/>
+<text x="40" y="66" font-size="40" font-weight="700" fill="#1a1a1a" text-anchor="start" >紅外線電路放大圖｜紅外線控制日立（Hitachi）冷氣（遙控器 RF11T1）</text>
+<text x="40" y="112" font-size="26" font-weight="400" fill="#4f5963" text-anchor="start" >分接／IR 驅動小板照這張焊；腳位都以 ESP32-C3 SuperMini 元件面朝上、USB-C 朝上的位置標示。</text>
+<rect x="40" y="150" width="1140" height="1060" rx="14" fill="#fbfbfc" stroke="#ced4da" stroke-width="2" />
+<text x="70" y="200" font-size="28" font-weight="700" fill="#1a1a1a" text-anchor="start" >A. IR 發射驅動（GPIO3 → NPN → 940 nm IR LED）</text>
+<circle cx="780" cy="262" r="12" fill="#f76707" stroke="#1a1a1a" stroke-width="3" />
+<text x="808" y="271" font-size="26" font-weight="700" fill="#c2410c" text-anchor="start" >5V（C3 右排 #1，USB VBUS）</text>
+<line x1="780" y1="274" x2="780" y2="310" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<rect x="756" y="310" width="48" height="120" rx="4" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="826" y="366" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >R2  33 Ω 1/4 W</text>
+<text x="826" y="400" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="start" >串在 5V 路徑上</text>
+<line x1="780" y1="430" x2="780" y2="490" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<path d="M730.0,490 L830.0,490 L780.0,570 Z" fill="#d0bfff" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="730" y1="570" x2="830" y2="570" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<line x1="842" y1="500" x2="884" y2="532" stroke="#7048e8" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowIR)"/>
+<line x1="842" y1="534" x2="884" y2="566" stroke="#7048e8" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowIR)"/>
+<text x="714" y="506" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="end" >陽極（長腳）</text>
+<text x="714" y="588" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="end" >陰極（短腳／平邊）</text>
+<text x="906" y="522" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >IR LED 940 nm、5 mm</text>
+<text x="906" y="556" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="start" >If ≈ 103 mA（脈衝）</text>
+<line x1="780" y1="570" x2="780" y2="668" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<circle cx="765" cy="740" r="62" fill="#ffffff" stroke="#1a1a1a" stroke-width="3" />
+<line x1="745" y1="702" x2="745" y2="778" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round" />
+<path d="M745.0,722 L780.0,690 L780.0,668" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M745.0,758 L780.0,790 L780.0,880" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M766.0,778 L780.0,790 L762.0,792" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+<text x="794" y="678" font-size="22" font-weight="700" fill="#1a1a1a" text-anchor="start" >C</text>
+<text x="794" y="842" font-size="22" font-weight="700" fill="#1a1a1a" text-anchor="start" >E</text>
+<text x="688" y="726" font-size="22" font-weight="700" fill="#1a1a1a" text-anchor="end" >B</text>
+<text x="850" y="728" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >Q1  NPN：S8050 或 2N2222</text>
+<text x="850" y="762" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="start" >TO-92 包裝</text>
+<text x="850" y="794" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="start" >腳序以實物 datasheet 為準</text>
+<circle cx="380" cy="740" r="12" fill="#2f9e44" stroke="#1a1a1a" stroke-width="3" />
+<text x="356" y="749" font-size="24" font-weight="700" fill="#2b8a3e" text-anchor="end" >GPIO3（C3 右排 #5）</text>
+<line x1="392" y1="740" x2="500" y2="740" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<rect x="500" y="716" width="130" height="48" rx="4" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" />
+<text x="565" y="700" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >R1  1 kΩ</text>
+<text x="565" y="800" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="middle" >Ib ≈ 2.6 mA</text>
+<line x1="630" y1="740" x2="745" y2="740" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<circle cx="680" cy="740" r="7" fill="#1a1a1a" stroke="none" stroke-width="0" />
+<line x1="680" y1="740" x2="680" y2="812" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 7"/>
+<rect x="656" y="812" width="48" height="110" rx="4" fill="#ffffff" stroke="#1a1a1a" stroke-width="4" stroke-dasharray="10 7"/>
+<text x="634" y="863" font-size="22" font-weight="700" fill="#1a1a1a" text-anchor="end" >R3  10 kΩ（建議）</text>
+<text x="634" y="897" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="end" >開機時把 B 拉低</text>
+<path d="M680,922 L680,960 L780.0,960" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="10 7"/>
+<circle cx="780" cy="960" r="7" fill="#1a1a1a" stroke="none" stroke-width="0" />
+<line x1="780" y1="880" x2="780" y2="1010" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<line x1="740" y1="1010" x2="820" y2="1010" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<line x1="754" y1="1022" x2="806" y2="1022" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<line x1="768" y1="1034" x2="792" y2="1034" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<text x="840" y="1026" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >GND（C3 右排 #2）</text>
+<text x="70" y="1108" font-size="22" font-weight="400" fill="#4f5963" text-anchor="start" >電阻選擇：33 Ω 放在 5V 與 LED 陽極之間（電阻就在 5V 路徑上）</text>
+<text x="70" y="1148" font-size="22" font-weight="400" fill="#4f5963" text-anchor="start" >LED 從 USB 5V 供電；GPIO3 只推電晶體基極（約 2.6 mA）</text>
+<rect x="1220" y="150" width="1140" height="640" rx="14" fill="#fbfbfc" stroke="#ced4da" stroke-width="2" />
+<text x="1250" y="200" font-size="28" font-weight="700" fill="#1a1a1a" text-anchor="start" >B. IR 接收頭（必備：首次設定用它錄遙控碼、確認協定）</text>
+<rect x="1300" y="260" width="180" height="290" rx="14" fill="#343a40" stroke="#1a1a1a" stroke-width="3" />
+<circle cx="1390" cy="340" r="40" fill="#6c757d" stroke="none" stroke-width="0" />
+<text x="1390" y="440" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle" >VS1838B</text>
+<text x="1390" y="476" font-size="22" font-weight="400" fill="#f1f3f5" text-anchor="middle" >38 kHz</text>
+<text x="1494" y="308" font-size="22" font-weight="700" fill="#495057" text-anchor="start" >OUT</text>
+<path d="M1480,320 L1640,320" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="rx-OUT" d="M1480,320 L1640,320" fill="none" stroke="#7048e8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1640" cy="320" r="10" fill="#7048e8" stroke="#141414" stroke-width="3" />
+<text x="1664" y="328" font-size="24" font-weight="700" fill="#5f3dc4" text-anchor="start" >→ GPIO10（左排 #6）</text>
+<text x="1494" y="393" font-size="22" font-weight="700" fill="#495057" text-anchor="start" >GND</text>
+<path d="M1480,405 L1640,405" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="rx-GND" d="M1480,405 L1640,405" fill="none" stroke="#2b2b2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1640" cy="405" r="10" fill="#2b2b2b" stroke="#141414" stroke-width="3" />
+<text x="1664" y="413" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >→ GND（右排 #2）</text>
+<text x="1494" y="478" font-size="22" font-weight="700" fill="#495057" text-anchor="start" >VCC</text>
+<path d="M1480,490 L1640,490" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="rx-VCC" d="M1480,490 L1640,490" fill="none" stroke="#e03131" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1640" cy="490" r="10" fill="#e03131" stroke="#141414" stroke-width="3" />
+<text x="1664" y="498" font-size="24" font-weight="700" fill="#c92a2a" text-anchor="start" >→ 3V3（右排 #3）</text>
+<text x="1250" y="606" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="start" >• VCC 接 3V3、不接 5V：OUT 才不會超過 3.3 V</text>
+<text x="1250" y="648" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 38 kHz；輸出低電位有效（ESPHome 設 inverted: true）</text>
+<text x="1250" y="690" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 避開陽光／日光燈直射（會誤觸）；離 IR LED 遠一點或加遮擋，免得收到自己發的訊號</text>
+<text x="1250" y="732" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 常見腳序 OUT-GND-VCC（面對圓頂、腳朝下由左到右），以實物為準</text>
+<rect x="1220" y="830" width="1140" height="400" rx="14" fill="#fbfbfc" stroke="#ced4da" stroke-width="2" />
+<text x="1250" y="878" font-size="28" font-weight="700" fill="#1a1a1a" text-anchor="start" >C. 零件腳位（以實物 datasheet 為準）</text>
+<text x="1340" y="940" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >IR LED</text>
+<path d="M1296,1020 L1296,1000 A44,44 0 0 1 1384,1000 L1384,1020 Z" fill="#d0bfff" stroke="#5f3dc4" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M1284,1020 L1384,1020 L1384,1034 L1284,1034 A6,6 0 0 1 1284,1020 Z" fill="#b197fc" stroke="#5f3dc4" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="1322" y1="1034" x2="1322" y2="1160" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<line x1="1358" y1="1034" x2="1358" y2="1118" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="1312" y="1194" font-size="22" font-weight="700" fill="#c2410c" text-anchor="middle" >長腳＝陽極 +</text>
+<text x="1380" y="1124" font-size="22" font-weight="700" fill="#1a1a1a" text-anchor="start" >短腳＝陰極 −</text>
+<text x="1396" y="1034" font-size="22" font-weight="400" fill="#1a1a1a" text-anchor="start" >← 平邊＝陰極側</text>
+<text x="1700" y="940" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >S8050</text>
+<path d="M1648,968 L1752,968 L1752,1028 A60,30 0 0 1 1648,1028 Z" fill="#343a40" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<text x="1700" y="1012" font-size="22" font-weight="400" fill="#f1f3f5" text-anchor="middle" >平面</text>
+<line x1="1660" y1="1054" x2="1660" y2="1128" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="1660" y="1160" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >E</text>
+<line x1="1700" y1="1054" x2="1700" y2="1128" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="1700" y="1160" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >B</text>
+<line x1="1740" y1="1054" x2="1740" y2="1128" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="1740" y="1160" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >C</text>
+<text x="1870" y="940" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >PN2222A</text>
+<path d="M1818,968 L1922,968 L1922,1028 A60,30 0 0 1 1818,1028 Z" fill="#343a40" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<text x="1870" y="1012" font-size="22" font-weight="400" fill="#f1f3f5" text-anchor="middle" >平面</text>
+<line x1="1830" y1="1054" x2="1830" y2="1128" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="1830" y="1160" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >E</text>
+<line x1="1870" y1="1054" x2="1870" y2="1128" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="1870" y="1160" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >B</text>
+<line x1="1910" y1="1054" x2="1910" y2="1128" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="1910" y="1160" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >C</text>
+<text x="2040" y="940" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >P2N2222A</text>
+<path d="M1988,968 L2092,968 L2092,1028 A60,30 0 0 1 1988,1028 Z" fill="#343a40" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<text x="2040" y="1012" font-size="22" font-weight="400" fill="#f1f3f5" text-anchor="middle" >平面</text>
+<line x1="2000" y1="1054" x2="2000" y2="1128" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="2000" y="1160" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >C</text>
+<line x1="2040" y1="1054" x2="2040" y2="1128" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="2040" y="1160" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >B</text>
+<line x1="2080" y1="1054" x2="2080" y2="1128" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="2080" y="1160" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >E</text>
+<text x="1870" y="1212" font-size="22" font-weight="400" fill="#4f5963" text-anchor="middle" >TO-92：平面朝自己、腳朝下，由左到右</text>
+<text x="2256" y="940" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="middle" >VS1838B</text>
+<rect x="2164" y="958" width="184" height="96" rx="10" fill="#343a40" stroke="#1a1a1a" stroke-width="3" />
+<circle cx="2256" cy="1006" r="32" fill="#6c757d" stroke="none" stroke-width="0" />
+<line x1="2192" y1="1054" x2="2192" y2="1140" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="2192" y="1174" font-size="22" font-weight="700" fill="#5f3dc4" text-anchor="middle" >OUT</text>
+<line x1="2256" y1="1054" x2="2256" y2="1140" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="2256" y="1174" font-size="22" font-weight="700" fill="#1a1a1a" text-anchor="middle" >GND</text>
+<line x1="2320" y1="1054" x2="2320" y2="1140" stroke="#868e96" stroke-width="6" stroke-linecap="round" />
+<text x="2320" y="1174" font-size="22" font-weight="700" fill="#c92a2a" text-anchor="middle" >VCC</text>
+<rect x="40" y="1262" width="2320" height="600" rx="14" fill="#f8f9fa" stroke="#ced4da" stroke-width="2" />
+<text x="70" y="1312" font-size="28" font-weight="700" fill="#1a1a1a" text-anchor="start" >D. IR LED 驅動計算（細節與來源見 PINMAP.md）</text>
+<text x="70" y="1368" font-size="23" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 限流電阻：R = (Vbus − Vf − Vce(sat)) ÷ If = (5.0 − 1.35 − 0.25) ÷ 0.10 ≈ 34 Ω → 取 33 Ω（E12）</text>
+<text x="70" y="1426" font-size="23" font-weight="400" fill="#1a1a1a" text-anchor="start" >• LED 電流：If = (5.0 − Vf − 0.25) ÷ 33 Ω；Vf 1.2 V → 約 108 mA、1.35 V → 約 103 mA、1.4 V → 約 102 mA</text>
+<text x="70" y="1484" font-size="23" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 電阻功率：峰值 I²R ≈ 0.103² × 33 ≈ 0.35 W；38 kHz 載波約 50% × 協定 mark 約 50% → 平均約 0.09 W，每次發送約 0.1–0.5 s，1/4 W 足夠</text>
+<text x="70" y="1542" font-size="23" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 基極：Ib = (3.3 − 0.7) ÷ 1 kΩ ≈ 2.6 mA，強制 β ≈ 103 ÷ 2.6 ≈ 40；S8050 在 100 mA 的最小 hFE 為 85（onsemi SS8050）→ 確實飽和</text>
+<text x="70" y="1600" font-size="23" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 改用 2N2222／PN2222A：150 mA、VCE = 1 V 的最小 hFE 是 50，餘裕較小；要更穩可把 1 kΩ 改 680 Ω（Ib ≈ 3.8 mA）</text>
+<text x="70" y="1658" font-size="23" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 不用 GPIO 直驅：ESP32-C3 單腳 IOH 典型 40 mA、IOL 28 mA（datasheet 表 5-4），遠低於 100 mA</text>
+<text x="70" y="1716" font-size="23" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 不從 3V3 供電：扣掉 Vf、Vce 後餘裕小，電流對 Vf 很敏感；100 mA 脈衝還會和 Wi-Fi 發射尖峰（最高 335 mA）共用板上 ME6211（500 mA）</text>
+<text x="70" y="1774" font-size="23" font-weight="400" fill="#1a1a1a" text-anchor="start" >• LED 型號未確認：實物 datasheet 的連續／脈衝電流上限若低於 100 mA，改用 47–68 Ω</text>
+<text x="70" y="1832" font-size="23" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 故障情況：GPIO3 若一直維持高電位，LED 會持續約 103 mA、33 Ω 持續約 0.35 W（超過 1/4 W）→ 韌體閒置須為低電位；要更保險可用 1/2 W</text>
+<text x="2360" y="1888" font-size="22" font-weight="400" fill="#4f5963" text-anchor="end" >板圖自繪，CC0-1.0</text>
+</svg>

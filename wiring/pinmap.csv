@@ -1,0 +1,11 @@
+連接對象,對象腳,C3腳名,位置,線色（建議）,說明
+AHT20+BMP280 模組,VDD,3V3,右排 #3,紅,經分接小板；一定接 3V3、不接 5V（模組上拉接在 VDD）
+AHT20+BMP280 模組,GND,GND,右排 #2,黑,經分接小板（GND 匯流）
+AHT20+BMP280 模組,SDA,GPIO4,右排 #4,藍,經分接小板轉接；I²C 走 GPIO matrix
+AHT20+BMP280 模組,SCL,GPIO5,左排 #1,黃,直接接到模組
+IR 驅動（33 Ω → LED 陽極）,5V 輸入,5V（USB VBUS）,右排 #1,橙,USB VBUS（板上二極體之前）；LED 脈衝電流約 103 mA
+IR 驅動（1 kΩ → Q1 基極 B）,訊號輸入,GPIO3,右排 #5,綠,RMT 發射；基極電流約 2.6 mA；建議 B–E 加 10 kΩ
+IR 驅動（Q1 射極 E）,GND,GND,右排 #2,黑,分接小板 GND 匯流
+IR 接收頭 VS1838B（必備）,VCC,3V3,右排 #3,紅,不接 5V；OUT 才不會超過 3.3 V
+IR 接收頭 VS1838B（必備）,GND,GND,右排 #2,黑,分接小板 GND 匯流
+IR 接收頭 VS1838B（必備）,OUT,GPIO10,左排 #6,紫,RMT 接收（38 kHz）；輸出低電位有效（inverted: true）；首次設定用來錄遙控碼、確認協定

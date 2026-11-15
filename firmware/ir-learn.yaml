@@ -1,0 +1,83 @@
+# SPDX-License-Identifier: GPL-3.0-only
+#
+# ir-learn.yaml — 錄遙控碼、確認日立冷氣協定用的韌體（不含 ESPectre）。
+# 狀態：編譯通過，尚未實機驗證。逐鍵錄碼流程見 ../docs/IR_HITACHI.md。
+#
+# 怎麼用：
+#   1. 接好 VS1838B（OUT→GPIO10、VCC→3V3、GND→GND）；IR 發射電路可以先不接。
+#   2. cp secrets.example.yaml secrets.yaml 並填好 Wi‑Fi（沿用主設定的同一份 secrets）。
+#   3. esphome run ir-learn.yaml --device <序列埠>   ← 燒錄並直接看 USB log
+#      之後也可以不接 USB：esphome logs ir-learn.yaml（經 Wi‑Fi 看 log）
+#   4. 拿 RF11T1 遙控器對著接收頭（約 30 cm–1 m），一次按一個鍵，看 log：
+#        - [climate.hitachi_ac344] … 或 climate 狀態更新 → 解成 AC344（ESPHome 能直接用）
+#        - [climate.hitachi_ac424] … → 解成 AC424（主設定改 platform: hitachi_ac424）
+#        - 只有 [remote.raw] Received Raw／[remote.pronto] Received Pronto → 用學習碼備案
+#   5. 錄完燒回 wifi-node.yaml。
+#
+# 和 wifi-node.yaml 共用 packages/ir-hardware.yaml（同樣的 GPIO3／GPIO10），避免接線不同。
+
+packages:
+  ir_hardware: !include packages/ir-hardware.yaml
+
+esphome:
+  name: wifi-node-ir-learn
+  friendly_name: Wi-Fi Node IR Learn
+  min_version: 2026.10.0
+
+esp32:
+  board: esp32-c3-devkitm-1
+  variant: esp32c3
+  framework:
+    type: esp-idf
+
+logger:
+  # 日立解碼器的明細在 VERBOSE；其他元件降回 INFO，避免洗版。
+  level: VERBOSE
+  logs:
+    climate.hitachi_ac344: VERBOSE
+    climate.hitachi_ac424: VERBOSE
+    remote.raw: INFO
+    remote.pronto: INFO
+    climate: DEBUG
+    wifi: INFO
+    api: INFO
+    api.service: INFO
+    component: INFO
+    scheduler: INFO
+    sensor: INFO
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    password: !secret fallback_ap_password
+
+captive_portal:
+
+# 讓 `esphome logs ir-learn.yaml` 可以經網路看 log（金鑰同主設定：第一次配對時才配發）。
+api:
+  encryption: {}
+
+provisioning:
+  timeout: 15min
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+# 把接收器改成「全部印出」：所有內建解碼器＋raw＋pronto。
+remote_receiver:
+  - id: !extend ir_rx
+    dump: all
+
+# remote_base 沒有日立的 dumper；日立 AC344／AC424 的解碼在 climate 平台裡，
+# 所以掛兩個「只用來聽」的 climate：哪一個解得出來，它的狀態就會跟著變並印出明細。
+climate:
+  - platform: hitachi_ac344
+    name: Learn AC344
+    transmitter_id: ir_tx
+    receiver_id: ir_rx
+  - platform: hitachi_ac424
+    name: Learn AC424
+    transmitter_id: ir_tx
+    receiver_id: ir_rx

@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: GPL-3.0-only
+# 選配：指定 CSI 流量的 ping 目標（預設 ping 預設閘道，不必設）。
+# 目標位址放在 secrets.yaml 的 csi_ping_target，不寫死在設定檔裡。
+# 目標必須是同網段、一直開著、會回 ICMP echo 的主機（例如路由器或 NAS）。
+espectre:
+  traffic_generator_target_ip: !secret csi_ping_target

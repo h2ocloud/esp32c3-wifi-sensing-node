@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: GPL-3.0-only
+# 選配：MQTT（預設關）。在 wifi-node.yaml 的 packages 取消 mqtt 那一行註解即可啟用。
+# broker／帳密都從 secrets.yaml 讀，不寫死在韌體裡。
+# 注意：同時開 Home Assistant API 與 MQTT 會多用一些 RAM；只用其中一個時可以把另一個關掉。
+mqtt:
+  broker: !secret mqtt_broker
+  port: 1883
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  # topic 前綴預設為裝置名（wifi-node/...）
+  topic_prefix: ${device_name}
+  # 已有 Home Assistant API 時不需要 MQTT discovery；只用 MQTT 時可改成 true。
+  discovery: false

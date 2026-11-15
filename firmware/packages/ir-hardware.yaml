@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: GPL-3.0-only
+# 紅外線硬體定義：wifi-node.yaml 與 ir-learn.yaml 共用同一份，避免兩邊接線不同。
+#   發射：GPIO3 → 1 kΩ → NPN（S8050／2N2222）基極；LED 從 USB 5V 經 33 Ω 到集極（見 wiring/PINMAP.md）
+#   接收：VS1838B（38 kHz）OUT → GPIO10，VCC→3V3、GND→GND（必備：首次設定要用它確認協定）
+# ESP32-C3 的 RMT 有 2 個 TX＋2 個 RX 通道；這裡各用 1 個。ESPectre 不使用 RMT。
+substitutions:
+  ir_tx_pin: GPIO3
+  ir_rx_pin: GPIO10
+
+remote_transmitter:
+  - id: ir_tx
+    pin: ${ir_tx_pin}          # 高電位＝電晶體導通＝LED 亮（NPN 低側開關，不需 inverted）
+    carrier_duty_percent: 50%  # 載波頻率由協定決定（日立 AC344 為 38 kHz）
+    non_blocking: true
+
+remote_receiver:
+  - id: ir_rx
+    pin:
+      number: ${ir_rx_pin}
+      inverted: true           # VS1838B 輸出平時為高、收到 38 kHz 載波時拉低
+      mode:
+        input: true
+        pullup: true
+    tolerance: 25%
+    idle: 10ms                 # 日立 AC344 一幀內最長的暗段是標頭 1.7 ms；幀間隔約 100 ms
+    # 日立 AC344 一幀 344 bit＋標頭＋結尾 ≈ 346 個 symbol；RMT 硬體記憶體 96 symbol，
+    # 靠 ESP32-C3 的 RX ping-pong 接續（SOC_RMT_SUPPORT_RX_PINGPONG）。尚未實機驗證。
+    receive_symbols: 512
+    dump: []                   # 平常不印；錄碼請燒 ir-learn.yaml（dump: all）

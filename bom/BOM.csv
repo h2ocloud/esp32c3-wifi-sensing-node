@@ -1,0 +1,16 @@
+item,part,qty,spec,group,source_or_note
+1,ESP32-C3 SuperMini,1,"ESP32-C3, 4MB flash, USB-C (USB-Serial/JTAG), ceramic antenna, PCB 22.52x18.00 mm, 2x8 headers soldered",core,"Nologo dimension drawing; Espressif ESP32-C3 datasheet; PCB thickness TBD"
+2,AHT20+BMP280 I2C module,1,"~16x16 mm, 4 pins VDD/SDA/GND/SCL (check silkscreen), powered from 3.3V, AHT20 0x38, BMP280 0x77 or 0x76",core,"Aosong AHT20 datasheet; Bosch BMP280 datasheet; module details TBD"
+3,Dupont wires F-F or 26-28 AWG wire,4,"red 3V3, black GND, blue SDA, yellow SCL (suggested)",core,"follow silkscreen, not wire colour"
+4,USB-C data cable + 5V charger,1,"5V >=1A",core,
+5,PLA filament 1.75 mm,1,"black (body), white (lid)",core,"amount TBD from R2 slicing"
+6,M3 pan-head screw + wall plug,2,"head <=7.0 mm dia, <=2.4 mm high",optional,"wall mount"
+7,Rubber feet,4,"~7.9 x 2.2 mm",optional,"standing"
+8,IR LED 940 nm 5 mm,1,"Vf ~1.2-1.4V, ~100 mA pulse; buy 2",ir,"model unconfirmed - check datasheet; use 47-68 ohm if max current <100 mA"
+9,NPN transistor S8050 or 2N2222 (TO-92),1,"Ic >=500 mA class",ir,"E/B/C pinout varies by maker"
+10,Resistor 33 ohm 1/4 W,1,"LED current limit",ir,"(5.0-1.35-0.25)/0.10 = 34 ohm -> 33 ohm"
+11,Resistor 1 kohm 1/4 W,1,"base resistor",ir,"Ib ~2.6 mA"
+12,Perfboard ~20x15 mm or flying wires,1,,ir,
+13,Wires,3,"GPIO3, 5V, GND",ir,
+14,VS1838B IR receiver 38 kHz,1,"2.7-5.5V (use 3.3V), 3 pins OUT/GND/VCC (check part)",ir,"REQUIRED for first setup (learn RF11T1 codes, confirm protocol); pinout varies"
+15,Wires,3,"GPIO10, 3V3, GND",ir,

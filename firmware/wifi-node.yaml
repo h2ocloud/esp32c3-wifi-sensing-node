@@ -1,0 +1,219 @@
+# SPDX-License-Identifier: GPL-3.0-only
+#
+# MOD-WIFI：Wi-Fi 偵測節點（ESP32-C3 SuperMini＋AHT20/BMP280＋紅外線控制日立冷氣（遙控器 RF11T1））
+# Wi-Fi CSI motion sensing node + Hitachi IR climate (RF11T1 remote) — ESPHome configuration
+#
+# 狀態：編譯通過（ESPHome 2026.10.2、ESP-IDF），尚未實機驗證。
+# Status: compiles with ESPHome 2026.10.2 (ESP-IDF); NOT yet tested on hardware.
+#
+# 這份設定用 ESPHome 內建的 `espectre` 元件（ESPHome 2026.10 起內建，
+# 上游 https://github.com/francescopace/espectre，GPL-3.0-only），
+# 所以整份韌體以 GPL-3.0-only 發布；理由見 ../docs/licensing.md。
+#
+# 使用前：
+#   1. cp secrets.example.yaml secrets.yaml，填入自己的值（secrets.yaml 已 gitignore）。
+#   2. esphome compile wifi-node.yaml
+#   3. 第一次用 USB 燒錄：esphome run wifi-node.yaml --device <序列埠>
+#
+# 選配功能（預設關）：
+#   - MQTT：取消下方 packages 的 mqtt 那一行註解。
+#   - 指定 CSI ping 目標（預設 ping 預設閘道）：取消 csi_ping_target 那一行註解。
+#   - 學習碼備案（hitachi_ac344 不能用時）：取消 ir_raw_scenes 那一行註解。
+# 紅外線接收頭 VS1838B 是必備（packages/ir-hardware.yaml）：第一次先燒 ir-learn.yaml 錄遙控碼、
+# 確認協定（見 docs/IR_HITACHI.md），再燒這份。
+
+substitutions:
+  # mDNS／主機名：預設 wifi-node（→ wifi-node.local）。多台時請各自改名，
+  # 或把下方 name_add_mac_suffix 改成 true（自動加 MAC 末三碼）。
+  device_name: wifi-node
+  friendly_name: Wi-Fi Node
+  # I²C 腳位：SDA=GPIO4、SCL=GPIO5（避開 GPIO2/8/9 strapping 與板載 LED、BOOT 鍵）。
+  i2c_sda: GPIO4
+  i2c_scl: GPIO5
+  # BMP280 位址：多數 AHT20+BMP280 二合一小板是 0x77（SDO 拉高）；
+  # 若開機 log 的 I²C 掃描只看到 0x76，改成 "0x76"。AHT20 固定 0x38。
+  bmp280_address: "0x77"
+  # 溫濕度氣壓更新週期。ESPectre 的移動分數另外依 evaluation interval 更新。
+  env_update_interval: 60s
+
+packages:
+  # 紅外線發射＋接收的腳位與設定（與 ir-learn.yaml 共用；GPIO3 發射、GPIO10 接收）
+  ir_hardware: !include packages/ir-hardware.yaml
+  # 以下選配預設關閉；要用就把該行開頭的「# 」刪掉：
+  # mqtt: !include packages/mqtt.yaml                        # MQTT
+  # csi_ping_target: !include packages/csi-ping-target.yaml  # 指定 CSI ping 目標
+  # ir_raw_scenes: !include packages/ir-raw-scenes.yaml      # 學習碼固定情境（備案）
+
+esphome:
+  name: ${device_name}
+  friendly_name: ${friendly_name}
+  # ESPHome 2026.10 起內建 espectre；2026.10.2 為本專案編譯驗證的版本。
+  min_version: 2026.10.0
+  name_add_mac_suffix: false
+  project:
+    name: mod-wifi.wifi-node
+    version: "0.1.0"
+
+esp32:
+  # ESP32-C3 SuperMini：4 MB flash、USB-Serial/JTAG（無外部 USB-UART 晶片）。
+  board: esp32-c3-devkitm-1
+  variant: esp32c3
+  # 部分 SuperMini 副廠板 QIO 燒錄不穩時，取消下一行註解（ESPectre C3 範例同樣建議）。
+  # flash_mode: dio
+  framework:
+    # espectre 需要 ESP-IDF ≥ 5.5.3（或 Arduino ≥ 3.3.7）；本專案用 ESP-IDF。
+    type: esp-idf
+
+logger:
+  # C3 SuperMini 預設走 USB-Serial/JTAG。
+  level: INFO
+
+# Home Assistant 原生 API（自動探索）。
+# encryption 不寫 key：裝置第一次被 Home Assistant 連上時才配發金鑰（ESPHome 2026.10
+# 的執行期佈建），韌體與 secrets.yaml 都不必存放 API 金鑰。
+api:
+  encryption: {}
+
+# 佈建時間窗：開機後 15 分鐘內才接受第一次配發 API 金鑰（之後要重新配對就重開機）。
+# 取得 API 金鑰的人也能經 OTA 上傳韌體，所以限制時間窗並只在受信任的區網配對。
+provisioning:
+  timeout: 15min
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  # CSI 需要無線電一直醒著：espectre 元件會強制關閉省電並停止週期漫遊掃描，
+  # 這裡也明寫，避免日後誤改。
+  power_save_mode: none
+  # 連不上 Wi-Fi 時開設定用 AP（SSID 由 ESPHome 依裝置名產生）。
+  ap:
+    password: !secret fallback_ap_password
+
+captive_portal:
+
+# USB 設定 Wi-Fi（Improv Serial），不用把帳密寫進韌體。
+improv_serial:
+
+# --- 感測：ESPectre Wi-Fi CSI 動作偵測 -----------------------------------------
+espectre:
+  id: csi
+  # lightweight（預設，開機會校準，校準期間房間要保持靜止）或 high_accuracy。
+  detection_algorithm: lightweight
+  # 流量來源：ping（預設，ping 預設閘道）、dns、dns_tcp、wifi_raw、external。
+  # 要 ping 其他主機時，啟用 packages/csi-ping-target.yaml（目標寫在 secrets.yaml）。
+  traffic_generator_mode: ping
+
+binary_sensor:
+  - platform: espectre
+    motion:
+      name: Motion
+      id: motion
+    calibrating:
+      name: Calibrating
+
+sensor:
+  - platform: espectre
+    movement:
+      name: Movement Score
+      id: movement_score
+    diagnostics:
+      # 預設不主動更新（按 Refresh Diagnostics 才發布），避免洗版。
+      csi_accepted_rate:
+        name: CSI Accepted Rate
+      csi_occupancy:
+        name: CSI Occupancy
+      traffic_rx_rate:
+        name: Traffic RX Rate
+
+  # AHT20：溫度、濕度（位址 0x38）
+  - platform: aht10
+    variant: AHT20
+    i2c_id: bus_a
+    update_interval: ${env_update_interval}
+    temperature:
+      name: Temperature
+      id: aht20_temperature
+    humidity:
+      name: Humidity
+      id: aht20_humidity
+
+  # BMP280：氣壓（＋晶片溫度，列為診斷用）
+  - platform: bmp280_i2c
+    i2c_id: bus_a
+    address: ${bmp280_address}
+    update_interval: ${env_update_interval}
+    pressure:
+      name: Pressure
+      id: bmp280_pressure
+    temperature:
+      name: BMP280 Temperature
+      id: bmp280_temperature
+      entity_category: diagnostic
+
+  - platform: wifi_signal
+    name: Wi-Fi Signal
+    update_interval: 60s
+    entity_category: diagnostic
+
+  - platform: uptime
+    name: Uptime
+    entity_category: diagnostic
+
+select:
+  - platform: espectre
+    name: CSI Traffic Source
+
+button:
+  - platform: espectre
+    name: Recalibrate
+  - platform: restart
+    name: Restart
+
+# --- 紅外線控制日立冷氣（遙控器 RF11T1；單向發射＋接收頭追蹤遙控器）-------------
+# 發射器 ir_tx、接收器 ir_rx 定義在 packages/ir-hardware.yaml。
+climate:
+  # 協定：IRremoteESP8266 的支援清單把 RF11T1 遙控器列為 HITACHI_AC344；ESPHome 對應平台
+  # hitachi_ac344。這只是文獻對應，台灣機種要先用接收頭確認（docs/IR_HITACHI.md）。
+  # 解不出來時可試 hitachi_ac424，或改用 packages/ir-raw-scenes.yaml 的學習碼備案。
+  - platform: hitachi_ac344
+    id: hitachi_ac
+    name: Hitachi AC
+    transmitter_id: ir_tx
+    # 接收頭聽到實體遙控器的指令時（且解得出來），更新 HA 上的狀態。
+    # 注意：這只代表「遙控器按了什麼」，不是冷氣的真實狀態。
+    receiver_id: ir_rx
+    # 房間溫濕度：用 AHT20 的讀值當冷氣的「目前溫度／濕度」。
+    sensor: aht20_temperature
+    humidity_sensor: aht20_humidity
+    # RF11T1 的按鍵沒有暖氣，先當冷專機；冷暖機種改成 true。
+    supports_heat: false
+
+i2c:
+  id: bus_a
+  sda: ${i2c_sda}
+  scl: ${i2c_scl}
+  # 開機時掃描並在 log 列出找到的位址（確認 0x38 與 0x76／0x77）。
+  scan: true
+  frequency: 100kHz
+
+# --- HTTP：JSON（REST＋SSE）與 Prometheus /metrics -------------------------------
+# web_server：每個實體有 JSON 端點，URL 用「實體名稱」（空白寫成 %20），例如
+# GET /sensor/Temperature、/binary_sensor/Motion、/climate/Hitachi%20AC；冷氣用
+# POST /climate/Hitachi%20AC/set?mode=COOL&target_temperature=26&fan_mode=AUTO 控制
+# （完整參數見 docs/API.md）。另有 /events（SSE）。
+# version 3 的前端 JS 預設從網路載入，不佔韌體空間。
+# 只能在受信任的區網使用；沒有登入保護時不要做 port forwarding。
+web_server:
+  port: 80
+  version: 3
+  # 要帳密保護時取消註解（值放 secrets.yaml）：
+  # auth:
+  #   username: !secret web_username
+  #   password: !secret web_password
+
+# Prometheus 格式：GET /metrics（只放原始值）。
+prometheus:
