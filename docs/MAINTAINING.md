@@ -26,7 +26,7 @@ tools/journal_append.sh now 採購 "ESP32-C3 與感測板到貨。BMP280 模組�
 4. 用**同一個工具 id** 更新 ToolHub（`tools/toolhub_update.py`）：
    - 先備份：線上 `index.html` 存到 `qa/publish/`，上一個已部署的 zip 在 `publish/history/`。
    - 差異檢查：和上一個已部署的 zip 比，只允許 `index.html` 的製作紀錄、姊妹連結區塊不同，其他檔案必須逐位元組相同；不符就停止。
-   - CMS `PUT /tools/{id}` 只送 `uploadType=zip`、`generateThumbnail=false`（其他欄位不送＝不變），封面一起重送（PUT 會覆蓋整個工具資料夾）。
+   - CMS `PUT /tools/{id}` 送 `uploadType=zip`、`generateThumbnail=false` 與自訂 `seoSlug`（實測：slug 不送會被依名稱重新產生；其他欄位不送＝不變），封面一起重送（PUT 會覆蓋整個工具資料夾）；更新後回讀 CMS 確認 slug、分類、描述都還在。
    - 驗證：線上頁含最新一筆、縮圖可下載且非空、favicon 仍內嵌。
 5. `repo` commit 並 push 到 GitHub。
 
