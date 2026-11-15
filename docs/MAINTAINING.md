@@ -26,11 +26,14 @@ tools/journal_append.sh now 採購 "ESP32-C3 與感測板到貨。BMP280 模組�
 4. 用**同一個工具 id** 更新 ToolHub（`tools/toolhub_update.py`）：
    - 先備份：線上 `index.html` 存到 `qa/publish/`，上一個已部署的 zip 在 `publish/history/`。
    - 差異檢查：和上一個已部署的 zip 比，只允許 `index.html` 的製作紀錄、姊妹連結區塊不同，其他檔案必須逐位元組相同；不符就停止。
-   - CMS `PUT /tools/{id}` 送 `uploadType=zip`、`generateThumbnail=false` 與自訂 `seoSlug`（實測：slug 不送會被依名稱重新產生；其他欄位不送＝不變），封面一起重送（PUT 會覆蓋整個工具資料夾）；更新後回讀 CMS 確認 slug、分類、描述都還在。
+   - 先讀 CMS 目前的紀錄（標題、描述、分類、slug 等）存檔；`PUT /tools/{id}` 送 `uploadType=zip`、`generateThumbnail=false`、**目前的** `seoSlug`（實測：slug 不送會被依名稱重新產生），以及**從 CMS 目前值取出、逐位元組原樣送回的標題**（不 trim、不正規化；本機不寫死標題）。描述等其他欄位不送，別人改過的值原樣保留；封面一起重送（PUT 會覆蓋整個工具資料夾）。
+   - 斷言：標題不可含「八個角色接力」；本專案標題的「Wi‑Fi」必須是不換行連字號 U+2011；不合規就停止、不自己組標題。更新後回讀 CMS，標題（逐位元組）、描述、分類、slug 必須和更新前完全相同。測試：`python3 -I qa/test_title_preserve.py --live`（工作區，唯讀）。
    - 驗證：線上頁含最新一筆、縮圖可下載且非空、favicon 仍內嵌。
 5. `repo` commit 並 push 到 GitHub。
 
 先演練不上傳：`DRY_RUN=1 tools/journal_append.sh …`；只更新頁面、先不 push：`NO_PUSH=1 tools/journal_append.sh …`。
+
+**專案頁暫停更新時**（例如有人正在改 ToolHub 標題）：工作區建立 `publish/CMS_PAUSED`（第一行寫原因）。這段期間第 4 步會自動跳過、待辦記到 `publish/PENDING_CMS.md`，紀錄照常 commit＋push 到 GitHub；`toolhub_update.py --go` 會直接拒絕。收到明確解除通知後才刪掉這個檔案，再照待辦上線。
 
 若停在第 3 步（掃描有命中）或第 4 步：紀錄已經追加了，修正後用**同樣參數**加 `SKIP_APPEND=1` 重跑，就不會重複追加。
 姊妹專案的 ToolHub 頁是公開網址，掃描只放行 `publish/sister.json` 記錄的那一條（其他 ToolHub 網址仍算命中）。
@@ -44,7 +47,13 @@ tools/journal_append.sh now 採購 "ESP32-C3 與感測板到貨。BMP280 模組�
 3. 頁面 QA：`python3 qa/qa_deck.py`（桌機／手機、深淺色截圖到 `qa/shots/`）。
 4. secret 掃描 0 命中後 commit、push；需要更新線上頁時，以同一個工具 id 做完整 PUT 並重跑上線驗證（見 `qa/REPORT.md` 的驗證步驟）。
 
-## 3. 誠實原則（每次都要守）
+## 3. 標題規則（2026-11-15 起）
+
+- 格式：「產品名：賣點｜軟硬整合系列」。本專案＝「Wi‑Fi 偵測節點：不裝鏡頭也知道有人｜軟硬整合系列」；姊妹專案＝「兒童 AI 問答機：按住就問，不用螢幕｜軟硬整合系列」。
+- ToolHub 標題、頁面 `<title>`、頁首與封面文字、README 與本紀錄的標題都照這個格式；「八個角色接力」不放進任何標題（章節內提到接力的做法可以）。
+- 標題字串的修改清單在工作區 `tools/title_edits.json`；只改頁面標題時，`toolhub_update.py --allow-title` 只允許清單內的替換，其餘仍逐字比對。
+
+## 4. 誠實原則（每次都要守）
 
 - 還沒實測的一律寫「尚未實機驗證」；實測後才把該項改成實測結果，並在紀錄裡寫清楚怎麼量、量到多少。
 - 規格數字要有來源；查不到就寫「待實物量測」。
