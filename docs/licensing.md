@@ -3,7 +3,7 @@
 | 部分 | 授權 | 理由 |
 |---|---|---|
 | `firmware/`（ESPHome YAML） | **GPL-3.0-only** | 見下 |
-| `cad/`、`wiring/`、`bom/` | **CERN-OHL-P-2.0** | 硬體預設採寬鬆型開源硬體授權，方便改作與製造 |
+| `cad/`、`wiring/`、`bom/`、`hardware/r3/`（R3 麵包板版） | **CERN-OHL-P-2.0** | 硬體預設採寬鬆型開源硬體授權，方便改作與製造 |
 | `wiring/` 內自繪的元件圖（SuperMini、感測板、電晶體、LED、接收頭） | **CC0-1.0** | 讓別人可以直接拿去畫自己的圖 |
 | `docs/` | 跟著所描述的部分：韌體相關（FIRMWARE、API、IR_HITACHI、SECURITY）GPL-3.0-only；硬體相關（PRINTING、ARCHITECTURE）CERN-OHL-P-2.0 | 避免文件與所描述的程式碼授權不一致 |
 

@@ -1,0 +1,14 @@
+-D usb_clr=-0.6 ／ #9（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜USB 讓位孔每邊少 1.0 → 極值插頭被擋
+-D bb_pos_tol=0 ／ #9（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜讓位孔不留板位置誤差 → 極值插頭被擋
+-D bb_pos_tol=0 ／ #13（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜母頭孔不留板位置誤差 → 極值母頭被擋
+-D bb_gap=0.5 ／ #34（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜角擋貼太近 → 最大板四周不到 1 mm
+-D bb_tab=1.0 ／ #2（預期 EMPTY，得 ASSERT）→ 設計 assert 擋下（參數守門有反應）｜牆離定位框只 1.0 → 推到角時 1.8 凸榫頂牆
+-D lid_clear=-0.4 ／ #5（預期 EMPTY，得 ASSERT）→ 設計 assert 擋下（參數守門有反應）｜蓋壓低 1 mm → 碰「最高板＋10.0」包絡
+-D led_cone_margin=-4 ／ #17（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜IR 窗按 ±23° 開 → ±25° 發射錐被擋
+-D bb_extra_bot=0 ／ #18（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜麵包板貼近隔牆 → 發射錐被隔牆頂擋
+-D rx_win_d=7 ／ #20（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜接收窗 Ø7 → 標稱 ±25° 被擋
+-D dht_w_tol=-1.2 ／ #15（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜DHT 艙寬按 12.4 模組做（艙 14.4）→ 最寬模組 14.6 放不進
+-D dht_rib_h=2.0 ／ #15（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜支撐肋太矮 → 背面彎針塑膠座頂到底板
+-D slit_w=0.8 ／ #23（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜切縫 0.8 → 0.9 探針不通
+-D esp_alt_dy=0 ／ #35（預期 EMPTY，得 NONEMPTY）→ FAIL（檢查有反應）｜USB 孔不涵蓋 B/F 插法 → 改插 B/F 時插頭被擋
+-D bb_tab=0.6 ／ #12（預期 EMPTY，得 ASSERT）→ 設計 assert 擋下（參數守門有反應）｜右牆貼近 → USB-C 母座頂牆（assert 先擋）

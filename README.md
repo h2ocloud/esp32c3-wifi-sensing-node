@@ -5,6 +5,8 @@
 > **狀態：韌體編譯通過、靜態檢查通過，尚未實機驗證。**
 > 零件還在路上；本 repo 沒有任何實機量測數字。外殼（R2）也還沒印出來。
 > 製作過程邊做邊記在 [`docs/JOURNAL.md`](docs/JOURNAL.md)。
+>
+> **R3 麵包板版（2026-11-21 起）**：溫濕度改用 DHT11 三腳模組、紅外線零件直接插在 170 孔迷你麵包板上。見下方 [R3 麵包板版](#r3-麵包板版)；以下 R2 內容原樣保留。
 
 用家裡的 Wi-Fi 訊號偵測「空間裡有沒有東西在動」（入侵、狗的夜間活動、睡覺時的身體動作），同時量溫度、濕度、氣壓，並且**紅外線控制日立冷氣（遙控器 RF11T1）**。全部接進 Home Assistant，也提供 HTTP JSON 與 Prometheus `/metrics`。
 
@@ -25,10 +27,11 @@
 
 | 路徑 | 內容 | 授權 |
 |---|---|---|
-| `firmware/` | ESPHome 設定檔 `wifi-node.yaml`、錄碼用 `ir-learn.yaml`、共用的紅外線硬體套件、選配套件、`secrets.example.yaml` | GPL-3.0-only |
+| `firmware/` | ESPHome 設定檔 `wifi-node.yaml`（R2）與 `wifi-node-dht11.yaml`（R3）、錄碼用 `ir-learn.yaml`、共用的紅外線硬體套件、選配套件、`secrets.example.yaml` | GPL-3.0-only |
 | `wiring/` | 腳位表（md＋csv）、彩色接線圖（PNG＋SVG）、紅外線電路圖、檢查清單、產生腳本 | CERN-OHL-P-2.0（自繪元件圖 CC0-1.0） |
 | `cad/` | 外殼 R2：OpenSCAD 原始檔、STL（組裝座標與列印姿態）、算繪圖、GLB、列印順序、組裝說明（STEP 與 G-code 在 Release） | CERN-OHL-P-2.0 |
-| `bom/` | 零件表（通用規格，不含價格與購買來源） | CERN-OHL-P-2.0 |
+| `bom/` | 零件表（通用規格，不含價格與購買來源）；R3 另有 `BOM_R3.md`／`BOM_R3.csv`（標已有／需補料） | CERN-OHL-P-2.0 |
+| `hardware/r3/` | **R3 麵包板版**：外殼 R3（OpenSCAD、STL、算繪圖）、麵包板接線圖（PNG＋SVG） | CERN-OHL-P-2.0（自繪元件圖 CC0-1.0） |
 | `docs/` | 架構、韌體、API、日立紅外線協定與逐鍵錄碼、列印、授權、安全、製作紀錄（`JOURNAL.md`）、維護流程（`MAINTAINING.md`） | 見 `docs/licensing.md` |
 | `LICENSES/` | 各授權全文 | — |
 
@@ -131,10 +134,31 @@ esphome run wifi-node.yaml             # 第一次用 USB 燒錄；之後可 OTA
 
 編譯結果（ESPHome 2026.10.2，ESP32-C3，靜態 RAM／應用程式分區 flash）：預設設定 RAM 34.2%、Flash 61.0%；全部選配 RAM 35.5%、Flash 67.9%；錄碼韌體 RAM 33.4%、Flash 52.8%。版本需求、CSI 流量、已知限制：[`docs/FIRMWARE.md`](docs/FIRMWARE.md)。
 
+## R3 麵包板版
+
+> **狀態：韌體編譯通過、外殼靜態檢查通過，尚未實機驗證。** 上面各節（R2）原樣保留；R3 只是換料與換外殼，功能相同。
+
+需求方改用手上的料：溫濕度改用 **DHT11 三腳模組**（用附的杜邦線接），**5 mm 紅外線 LED、VS1838B 接收頭**與電阻**直接插在 170 孔迷你麵包板上**，麵包板用背膠黏在殼內。
+
+| 項目 | R2 | R3 |
+|---|---|---|
+| 溫濕度 | AHT20+BMP280（I²C，有氣壓） | DHT11 三腳模組（單線，沒有氣壓；精度 ±2 °C／±5 %RH） |
+| 紅外線電路 | 洞洞板（要焊）；NPN 驅動 | 170 孔迷你麵包板（免焊）；預設直驅，可升級電晶體版 |
+| 韌體 | `firmware/wifi-node.yaml` | `firmware/wifi-node-dht11.yaml`（`dht` 平台、`model: DHT11`） |
+| 外殼 | `cad/`（R2） | `hardware/r3/`（R3） |
+| 零件表 | `bom/BOM.md` | `bom/BOM_R3.md` |
+
+- **腳位**：DHT11 DATA＝**GPIO4**（VCC 接 3V3、GND）；IR 發射＝**GPIO3**（直驅與電晶體版同腳）、IR 接收（VS1838B OUT）＝**GPIO10**；5V 只有電晶體版的 LED 用。麵包板孔位見 [`docs/BREADBOARD_R3.md`](docs/BREADBOARD_R3.md)。
+- **需補料（不代購）**：NPN 電晶體（S8050 或 2N2222）**只有升級成電晶體版才需要**；麵包板跳線約 7 條，手上沒有就補；高版的 DHT11 要用公母杜邦線，模組附的若是母對母，另補 3 條公母線。
+- **紅外線發射兩版**：預設**直驅版**（GPIO3 → 220 Ω → LED，約 9 mA、距離約 1 m，用手上現有的電阻）；補到 NPN 後原位升級成**電晶體版**（基極 1 kΩ、5V 經 3 顆 220 Ω 並聯，約 45–50 mA）。韌體不用改。計算與限制見 [`docs/BREADBOARD_R3.md`](docs/BREADBOARD_R3.md) 第 5 節。
+- **完整說明**（零件、腳位、麵包板插法、DHT11 與 AHT20 的差異、外殼、到貨要量）：[`docs/BREADBOARD_R3.md`](docs/BREADBOARD_R3.md)；紅外線學碼照 [`docs/IR_HITACHI.md`](docs/IR_HITACHI.md)（腳位同 R2）。
+- 編譯結果（ESPHome 2026.10.2）：RAM 34.2%、Flash 59.9%（比 R2 少約 19 KB flash）。
+- **G-code 與 STEP**：等 R3 的 G-code 到齊後，發布 **Release v0.2.0**；R2 的檔案仍在 [Release v0.1.0](https://github.com/h2ocloud/esp32c3-wifi-sensing-node/releases/tag/v0.1.0)。
+
 ## 授權
 
 - **韌體（`firmware/`）：GPL-3.0-only。** 韌體使用 ESPectre（GPL-3.0-only）與 ESPHome 的 C++ 執行程式碼（GPLv3），編出來的韌體是一個結合後的程式，散布時整體須以 GPLv3 授權並提供完整對應原始碼。所以本專案韌體設定檔與上游一致採 GPL-3.0-only。
-- **硬體（`cad/`、`wiring/`、`bom/`）：CERN-OHL-P-2.0。** 自繪的元件圖（板子、模組、電晶體、LED、接收頭）另以 CC0-1.0 釋出。
+- **硬體（`cad/`、`wiring/`、`bom/`、`hardware/r3/`）：CERN-OHL-P-2.0。** 自繪的元件圖（板子、模組、電晶體、LED、接收頭）另以 CC0-1.0 釋出。
 - 文件依所屬部分適用上述授權，細節與理由見 [`docs/licensing.md`](docs/licensing.md)；上游授權與致謝見 [`NOTICE.md`](NOTICE.md)。
 
 ## 致謝與上游
@@ -153,5 +177,7 @@ esphome run wifi-node.yaml             # 第一次用 USB 燒錄；之後可 OTA
 Limitations: CSI only detects *that something moves* — it cannot tell a person from a dog, it is not sleep staging, and it is not a medical or security-grade device. It needs a stable 2.4 GHz AP, covers one room per node, and must stay still during calibration. IR control is one-way (no AC state feedback; the receiver only tracks what the remote sent), needs line of sight, and the protocol must be confirmed on the actual unit.
 
 Case: two-part sliding-lid enclosure, revision R2 (black body, white lid, IR LED and VS1838B windows), printed together with the sister project [mod-ask-kids-ai](https://github.com/h2ocloud/mod-ask-kids-ai) on two shared plates (PLA, 0.28 mm, no supports); not printed yet. STEP and G-code are attached to [Release v0.1.0](https://github.com/h2ocloud/esp32c3-wifi-sensing-node/releases/tag/v0.1.0). A build journal is kept in `docs/JOURNAL.md`.
+
+**R3 breadboard build (since 2026-11-21):** the same functions with a DHT11 3-pin module instead of the AHT20+BMP280 (no pressure; ±2 °C / ±5 %RH), and the IR LED, VS1838B and resistors plugged into a 170-point mini breadboard glued inside the R3 case. The IR LED is driven directly from GPIO3 through 220 Ω by default (~9 mA, ~1 m, estimated); an NPN (S8050/2N2222) upgrade with 3×220 Ω in parallel from 5 V gives ~45–50 mA with the same firmware. Firmware `firmware/wifi-node-dht11.yaml` (compiles; not yet tested on hardware), notes in `docs/BREADBOARD_R3.md`, case and wiring in `hardware/r3/`. The R2 files are kept unchanged.
 
 License: firmware GPL-3.0-only (because of ESPectre/ESPHome); hardware (CAD, wiring, BOM) CERN-OHL-P-2.0; self-drawn part graphics CC0-1.0.
