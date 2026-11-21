@@ -93,6 +93,8 @@ wifi:
   # CSI 需要無線電一直醒著：espectre 元件會強制關閉省電並停止週期漫遊掃描，
   # 這裡也明寫，避免日後誤改。
   power_save_mode: none
+  # C3 SuperMini 天線設計差，預設最大發射功率常連不上 AP；降到 8.5 dB 是社群常見解法。
+  output_power: 8.5dB
   # 連不上 Wi-Fi 時開設定用 AP（SSID 由 ESPHome 依裝置名產生）。
   ap:
     password: !secret fallback_ap_password
