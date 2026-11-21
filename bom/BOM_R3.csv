@@ -9,7 +9,7 @@ item,part,qty,status,spec,group,note
 8,Resistor 1 kohm 1/4 W,1,have,"base resistor for the transistor version, Ib ~2.6 mA (not used for direct drive)",ir,
 9,Resistor 10 kohm 1/4 W,1–2,have,transistor version: B-E pull-down (recommended); optional external pull-up on the VS1838B OUT,ir,
 10,"NPN transistor S8050 or 2N2222 (TO-92), upgrade only",1（升級才要）,need,only for the transistor version; E/B/C order varies by maker; an LM337LZ (TO-92 regulator) is NOT a substitute,ir,
-11,Breadboard jumper wires (male-male),約 7,need,"direct drive (default) needs 6: F15-F13, H5-J17, H2-J13, H3-E12, I2-E13, A6-E14; upgrading to the transistor version removes F15-F13, moves the H5 wire to J12 and adds a 5 V wire H1-J17, still about 6; 7 is a safe count; short hops such as F15-F13 can be made from clipped component leads",ir,
+11,Breadboard jumper wires (male-male),6（直驅）,need,"direct drive (default) needs 6: GPIO10 A6-E14, 3V3 H3-E12, GND I2-I13, GND F13-E13 (short, across the trench), GND G13-G15 (LED cathode row), GPIO3 J5-G17; the transistor version adds one 5 V jumper later (holes to be laid out when the NPN arrives); short hops can be made from clipped component leads",ir,
 12,Double-sided foam tape (small pieces),少量,need,fixes the DHT11 module on the bay ribs (if not on hand); the breadboard has its own adhesive,core,
 13,USB-C data cable + 5 V charger,1,reuse,5 V >= 1 A; data-capable (for flashing),core,
 14,PLA filament 1.75 mm (black/white),少量,reuse,"black body, white lid (same scheme as R2)",core,

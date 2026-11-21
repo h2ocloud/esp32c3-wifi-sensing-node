@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2440" height="2400" viewBox="0 0 2440 2400" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei','Heiti TC','Noto Sans CJK TC',sans-serif">
+<title>Wi‑Fi 偵測節點 R3 麵包板接線圖</title>
+<desc>ESP32-C3 SuperMini 跨插 170 孔麵包板，接 DHT11、VS1838B 紅外線接收頭、IR LED（220 Ω 直驅）。</desc>
+<defs><pattern id="hatchAvoid" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><rect width="10" height="10" fill="#c7ccd1"/><rect width="4" height="10" fill="#6c757d"/></pattern><pattern id="hatchKeep" patternUnits="userSpaceOnUse" width="22" height="22" patternTransform="rotate(45)"><rect width="22" height="22" fill="#fff5f5"/><rect width="6" height="22" fill="#ffc9c9"/></pattern><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/></marker><marker id="arrowIR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7048e8"/></marker></defs>
+<rect x="0" y="0" width="2440" height="2400" fill="#ffffff"/>
+<text x="36" y="62" font-size="38" font-weight="700" fill="#1a1a1a" text-anchor="start" >Wi‑Fi 偵測節點 R3 麵包板接線圖：ESP32‑C3 SuperMini ＋ DHT11 ＋ 紅外線控制日立冷氣（遙控器 RF11T1）</text>
+<text x="36" y="108" font-size="22" font-weight="400" fill="#4f5963" text-anchor="start" >全部插在一片 170 孔迷你麵包板上（SYB-170，17 行 × A–J 10 排，沒有電源排），以後不用拔線；照外殼擺法從上往下看：USB-C 朝右。每條線的端點由程式算到孔中心。</text>
+<rect x="696.1" y="392.3" width="1034" height="770" rx="10" fill="#f4f1ea" stroke="#a39e93" stroke-width="3" />
+<rect x="702.1" y="757.5" width="1022" height="39.6" rx="4" fill="#e3ded3" stroke="none" stroke-width="0" />
+<text x="1660.1" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >1</text>
+<text x="1660.1" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >1</text>
+<text x="1604.2" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >2</text>
+<text x="1548.4" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >3</text>
+<text x="1492.5" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >4</text>
+<text x="1436.6" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >5</text>
+<text x="1436.6" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >5</text>
+<text x="1380.7" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >6</text>
+<text x="1324.8" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >7</text>
+<text x="1324.8" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >7</text>
+<text x="1269" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >8</text>
+<text x="1269" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >8</text>
+<text x="1213.1" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >9</text>
+<text x="1213.1" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >9</text>
+<text x="1157.2" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >10</text>
+<text x="1157.2" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >10</text>
+<text x="1101.3" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >11</text>
+<text x="1101.3" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >11</text>
+<text x="1045.4" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >12</text>
+<text x="1045.4" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >12</text>
+<text x="989.6" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >13</text>
+<text x="989.6" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >13</text>
+<text x="933.7" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >14</text>
+<text x="933.7" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >14</text>
+<text x="877.8" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >15</text>
+<text x="821.9" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >16</text>
+<text x="766" y="418.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >17</text>
+<text x="766" y="1143.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >17</text>
+<text x="739.8" y="476" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >A</text>
+<text x="739.8" y="531.9" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >B</text>
+<text x="739.8" y="587.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >C</text>
+<text x="739.8" y="643.6" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >D</text>
+<text x="739.8" y="699.5" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >E</text>
+<text x="739.8" y="867.2" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >F</text>
+<text x="739.8" y="923" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >G</text>
+<text x="739.8" y="978.9" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >H</text>
+<text x="739.8" y="1034.8" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >I</text>
+<text x="739.8" y="1090.7" font-size="16" font-weight="700" fill="#857f73" text-anchor="middle" >J</text>
+<rect x="1653.1" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1653.1" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1653.1" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1653.1" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1653.1" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1653.1" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1653.1" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1653.1" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1653.1" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1653.1" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1597.2" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1597.2" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1597.2" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1597.2" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1597.2" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1597.2" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1597.2" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1597.2" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1597.2" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1597.2" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1541.4" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1541.4" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1541.4" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1541.4" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1541.4" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1541.4" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1541.4" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1541.4" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1541.4" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1541.4" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1485.5" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1485.5" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1485.5" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1485.5" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1485.5" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1485.5" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1485.5" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1485.5" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1485.5" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1485.5" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1429.6" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1429.6" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1429.6" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1429.6" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1429.6" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1429.6" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1429.6" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1429.6" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1429.6" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1429.6" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1373.7" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1373.7" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1373.7" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1373.7" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1373.7" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1373.7" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1373.7" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1373.7" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1373.7" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1373.7" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1317.8" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1317.8" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1317.8" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1317.8" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1317.8" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1317.8" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1317.8" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1317.8" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1317.8" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1317.8" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1262" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1262" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1262" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1262" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1262" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1262" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1262" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1262" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1262" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1262" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1206.1" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1206.1" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1206.1" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1206.1" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1206.1" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1206.1" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1206.1" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1206.1" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1206.1" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1206.1" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1150.2" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1150.2" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1150.2" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1150.2" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1150.2" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1150.2" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1150.2" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1150.2" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1150.2" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1150.2" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1094.3" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1094.3" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1094.3" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1094.3" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1094.3" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1094.3" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1094.3" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1094.3" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1094.3" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1094.3" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1038.4" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1038.4" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1038.4" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1038.4" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1038.4" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1038.4" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1038.4" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1038.4" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1038.4" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1038.4" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="982.6" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="982.6" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="982.6" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="982.6" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="982.6" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="982.6" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="982.6" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="982.6" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="982.6" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="982.6" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="926.7" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="926.7" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="926.7" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="926.7" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="926.7" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="926.7" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="926.7" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="926.7" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="926.7" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="926.7" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="870.8" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="870.8" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="870.8" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="870.8" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="870.8" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="870.8" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="870.8" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="870.8" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="870.8" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="870.8" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="814.9" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="814.9" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="814.9" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="814.9" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="814.9" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="814.9" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="814.9" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="814.9" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="814.9" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="814.9" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="759" y="463" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="759" y="518.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="759" y="574.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="759" y="630.6" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="759" y="686.5" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="759" y="854.2" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="759" y="910" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="759" y="965.9" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="759" y="1021.8" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="759" y="1077.7" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<rect x="1022.1" y="551.4" width="176" height="396" rx="6" fill="url(#hatchKeep)" stroke="#e03131" stroke-width="3" opacity="0.82" stroke-dasharray="10 6"/>
+<text x="1110.1" y="757.3" font-size="18" font-weight="700" fill="#a61e1e" text-anchor="middle" >天線淨空</text>
+<text x="1110.1" y="783.3" font-size="17" font-weight="700" fill="#a61e1e" text-anchor="middle" >前方 8 mm</text>
+<text x="1110.1" y="807.3" font-size="17" font-weight="700" fill="#a61e1e" text-anchor="middle" >不放零件</text>
+<rect x="1198.1" y="551.4" width="495.4" height="396" rx="12" fill="#1f2a36" stroke="#0b0f14" stroke-width="4" opacity="0.96"/>
+<rect x="1559.4" y="650.4" width="162.8" height="198" rx="16" fill="#cfd4da" stroke="#6c757d" stroke-width="3" />
+<rect x="1708.2" y="672.4" width="8" height="154" rx="3" fill="#495057" stroke="none" stroke-width="0" />
+<text x="1636.4" y="756.4" font-size="20" font-weight="700" fill="#1a1a1a" text-anchor="middle" >USB-C</text>
+<rect x="1426" y="716.4" width="66" height="66" rx="5" fill="#343a40" stroke="#adb5bd" stroke-width="2" transform="rotate(45 1459 749.4)"/>
+<text x="1459" y="755.4" font-size="17" font-weight="700" fill="#f1f3f5" text-anchor="middle" >C3</text>
+<rect x="1204.1" y="676.8" width="41.8" height="145.2" rx="4" fill="#f4a3a3" stroke="#c92a2a" stroke-width="3" />
+<text x="1316.5" y="701.9" font-size="17" font-weight="700" fill="#ffc9c9" text-anchor="middle" >天線</text>
+<text x="1316.5" y="808.9" font-size="20" font-weight="700" fill="#ffc9c9" text-anchor="middle" >←</text>
+<text x="1459" y="685.1" font-size="17" font-weight="700" fill="#dee2e6" text-anchor="middle" >ESP32-C3 SuperMini</text>
+<text x="1459" y="824.8" font-size="17" font-weight="700" fill="#dee2e6" text-anchor="middle" >元件面朝上</text>
+<circle cx="1660.1" cy="581.8" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1660.1" cy="581.8" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1660.1" y="621.8" font-size="16" font-weight="400" fill="#d0d7de" text-anchor="middle" >IO5</text>
+<text x="1660.1" y="641.8" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#1</text>
+<circle cx="1660.1" cy="917" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1660.1" cy="917" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1660.1" y="871" font-size="16" font-weight="400" fill="#d0d7de" text-anchor="middle" >5V</text>
+<text x="1660.1" y="891" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#1</text>
+<circle cx="1604.2" cy="581.8" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1604.2" cy="581.8" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1604.2" y="621.8" font-size="16" font-weight="400" fill="#d0d7de" text-anchor="middle" >IO6</text>
+<text x="1604.2" y="641.8" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#2</text>
+<circle cx="1604.2" cy="917" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1604.2" cy="917" r="20" fill="none" stroke="#2b2b2b" stroke-width="5" />
+<circle cx="1604.2" cy="917" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1604.2" y="871" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" >GND</text>
+<text x="1604.2" y="891" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#2</text>
+<circle cx="1548.4" cy="581.8" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1548.4" cy="581.8" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1548.4" y="621.8" font-size="16" font-weight="400" fill="#d0d7de" text-anchor="middle" >IO7</text>
+<text x="1548.4" y="641.8" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#3</text>
+<circle cx="1548.4" cy="917" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1548.4" cy="917" r="20" fill="none" stroke="#e03131" stroke-width="5" />
+<circle cx="1548.4" cy="917" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1548.4" y="871" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" >3V3</text>
+<text x="1548.4" y="891" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#3</text>
+<circle cx="1492.5" cy="581.8" r="15" fill="url(#hatchAvoid)" stroke="#495057" stroke-width="3" />
+<circle cx="1492.5" cy="581.8" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1492.5" y="621.8" font-size="16" font-weight="400" fill="#9aa5b1" text-anchor="middle" >IO8</text>
+<text x="1492.5" y="641.8" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#4</text>
+<circle cx="1492.5" cy="917" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1492.5" cy="917" r="20" fill="none" stroke="#1971c2" stroke-width="5" />
+<circle cx="1492.5" cy="917" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1492.5" y="871" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" >IO4</text>
+<text x="1492.5" y="891" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#4</text>
+<circle cx="1436.6" cy="581.8" r="15" fill="url(#hatchAvoid)" stroke="#495057" stroke-width="3" />
+<circle cx="1436.6" cy="581.8" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1436.6" y="621.8" font-size="16" font-weight="400" fill="#9aa5b1" text-anchor="middle" >IO9</text>
+<text x="1436.6" y="641.8" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#5</text>
+<circle cx="1436.6" cy="917" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1436.6" cy="917" r="20" fill="none" stroke="#2f9e44" stroke-width="5" />
+<circle cx="1436.6" cy="917" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1436.6" y="871" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" >IO3</text>
+<text x="1436.6" y="891" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#5</text>
+<circle cx="1380.7" cy="581.8" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1380.7" cy="581.8" r="20" fill="none" stroke="#7048e8" stroke-width="5" />
+<circle cx="1380.7" cy="581.8" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1380.7" y="621.8" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" >IO10</text>
+<text x="1380.7" y="641.8" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#6</text>
+<circle cx="1380.7" cy="917" r="15" fill="url(#hatchAvoid)" stroke="#495057" stroke-width="3" />
+<circle cx="1380.7" cy="917" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1380.7" y="871" font-size="16" font-weight="400" fill="#9aa5b1" text-anchor="middle" >IO2</text>
+<text x="1380.7" y="891" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#6</text>
+<circle cx="1324.8" cy="581.8" r="15" fill="url(#hatchAvoid)" stroke="#495057" stroke-width="3" />
+<circle cx="1324.8" cy="581.8" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1324.8" y="621.8" font-size="16" font-weight="400" fill="#9aa5b1" text-anchor="middle" >IO20</text>
+<text x="1324.8" y="641.8" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#7</text>
+<circle cx="1324.8" cy="917" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1324.8" cy="917" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1324.8" y="871" font-size="16" font-weight="400" fill="#d0d7de" text-anchor="middle" >IO1</text>
+<text x="1324.8" y="891" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#7</text>
+<circle cx="1269" cy="581.8" r="15" fill="url(#hatchAvoid)" stroke="#495057" stroke-width="3" />
+<circle cx="1269" cy="581.8" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1269" y="621.8" font-size="16" font-weight="400" fill="#9aa5b1" text-anchor="middle" >IO21</text>
+<text x="1269" y="641.8" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#8</text>
+<circle cx="1269" cy="917" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="1269" cy="917" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="1269" y="871" font-size="16" font-weight="400" fill="#d0d7de" text-anchor="middle" >IO0</text>
+<text x="1269" y="891" font-size="16" font-weight="400" fill="#8fa3b8" text-anchor="middle" >#8</text>
+<line x1="766" y1="972.9" x2="821.9" y2="972.9" stroke="#868e96" stroke-width="4" stroke-linecap="round" />
+<rect x="777" y="964.9" width="34" height="16" rx="5" fill="#f1e1c6" stroke="#1a1a1a" stroke-width="2.5" />
+<rect x="784" y="964.9" width="3.5" height="16" rx="0" fill="#c92a2a" stroke="none" stroke-width="0" />
+<rect x="791" y="964.9" width="3.5" height="16" rx="0" fill="#c92a2a" stroke="none" stroke-width="0" />
+<rect x="798" y="964.9" width="3.5" height="16" rx="0" fill="#6b3e26" stroke="none" stroke-width="0" />
+<circle cx="766" cy="972.9" r="5" fill="#868e96" stroke="none" stroke-width="0" />
+<circle cx="821.9" cy="972.9" r="5" fill="#868e96" stroke="none" stroke-width="0" />
+<line x1="766" y1="1028.8" x2="821.9" y2="1028.8" stroke="#868e96" stroke-width="4" stroke-linecap="round"  stroke-dasharray="7 5"/>
+<rect x="777" y="1020.8" width="34" height="16" rx="5" fill="#ffffff" stroke="#1a1a1a" stroke-width="2.5"  stroke-dasharray="7 5"/>
+<rect x="784" y="1020.8" width="3.5" height="16" rx="0" fill="#c92a2a" stroke="none" stroke-width="0" />
+<rect x="791" y="1020.8" width="3.5" height="16" rx="0" fill="#c92a2a" stroke="none" stroke-width="0" />
+<rect x="798" y="1020.8" width="3.5" height="16" rx="0" fill="#6b3e26" stroke="none" stroke-width="0" />
+<circle cx="766" cy="1028.8" r="5" fill="#868e96" stroke="none" stroke-width="0" />
+<circle cx="821.9" cy="1028.8" r="5" fill="#868e96" stroke="none" stroke-width="0" />
+<line x1="933.7" y1="637.6" x2="1045.4" y2="637.6" stroke="#868e96" stroke-width="4" stroke-linecap="round"  stroke-dasharray="7 5"/>
+<rect x="972.6" y="629.6" width="34" height="16" rx="5" fill="#ffffff" stroke="#1a1a1a" stroke-width="2.5"  stroke-dasharray="7 5"/>
+<rect x="979.6" y="629.6" width="3.5" height="16" rx="0" fill="#6b3e26" stroke="none" stroke-width="0" />
+<rect x="986.6" y="629.6" width="3.5" height="16" rx="0" fill="#1a1a1a" stroke="none" stroke-width="0" />
+<rect x="993.6" y="629.6" width="3.5" height="16" rx="0" fill="#f08c00" stroke="none" stroke-width="0" />
+<circle cx="933.7" cy="637.6" r="5" fill="#868e96" stroke="none" stroke-width="0" />
+<circle cx="1045.4" cy="637.6" r="5" fill="#868e96" stroke="none" stroke-width="0" />
+<path d="M1380.7,470 L1380.7,352.7 L896.2,352.7 L896.2,665.6 L933.7,693.5" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="GPIO10" d="M1380.7,470 L1380.7,352.7 L896.2,352.7 L896.2,665.6 L933.7,693.5" fill="none" stroke="#7048e8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1380.7" cy="470" r="9" fill="#7048e8" stroke="#141414" stroke-width="3" />
+<circle cx="933.7" cy="693.5" r="9" fill="#7048e8" stroke="#141414" stroke-width="3" />
+<path d="M1548.4,972.9 L1520.4,1000.9 L1017.5,1000.9 L1017.5,721.5 L1045.4,693.5" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="3V3" d="M1548.4,972.9 L1520.4,1000.9 L1017.5,1000.9 L1017.5,721.5 L1045.4,693.5" fill="none" stroke="#e03131" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1548.4" cy="972.9" r="9" fill="#e03131" stroke="#141414" stroke-width="3" />
+<circle cx="1045.4" cy="693.5" r="9" fill="#e03131" stroke="#141414" stroke-width="3" />
+<path d="M1604.2,1028.8 L1576.3,1056.7 L1017.5,1056.7 L989.6,1028.8" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="GND" d="M1604.2,1028.8 L1576.3,1056.7 L1017.5,1056.7 L989.6,1028.8" fill="none" stroke="#2b2b2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1604.2" cy="1028.8" r="9" fill="#2b2b2b" stroke="#141414" stroke-width="3" />
+<circle cx="989.6" cy="1028.8" r="9" fill="#2b2b2b" stroke="#141414" stroke-width="3" />
+<path d="M989.6,861.2 L989.6,693.5" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="GND" d="M989.6,861.2 L989.6,693.5" fill="none" stroke="#2b2b2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="989.6" cy="861.2" r="9" fill="#2b2b2b" stroke="#141414" stroke-width="3" />
+<circle cx="989.6" cy="693.5" r="9" fill="#2b2b2b" stroke="#141414" stroke-width="3" />
+<path d="M989.6,917 L961.6,889.1 L905.7,889.1 L877.8,917" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="GND" d="M989.6,917 L961.6,889.1 L905.7,889.1 L877.8,917" fill="none" stroke="#2b2b2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="989.6" cy="917" r="9" fill="#2b2b2b" stroke="#141414" stroke-width="3" />
+<circle cx="877.8" cy="917" r="9" fill="#2b2b2b" stroke="#141414" stroke-width="3" />
+<path d="M1436.6,1084.7 L1408.7,1112.6 L961.6,1112.6 L961.6,945 L794,945 L766,917" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="GPIO3" d="M1436.6,1084.7 L1408.7,1112.6 L961.6,1112.6 L961.6,945 L794,945 L766,917" fill="none" stroke="#2f9e44" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1436.6" cy="1084.7" r="9" fill="#2f9e44" stroke="#141414" stroke-width="3" />
+<circle cx="766" cy="917" r="9" fill="#2f9e44" stroke="#141414" stroke-width="3" />
+<path d="M1492.5,1084.7 L1492.5,1230" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="GPIO4" d="M1492.5,1084.7 L1492.5,1230" fill="none" stroke="#1971c2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1492.5" cy="1084.7" r="9" fill="#1971c2" stroke="#141414" stroke-width="3" />
+<circle cx="1492.5" cy="1230" r="9" fill="#1971c2" stroke="#141414" stroke-width="3" />
+<path d="M1548.4,1084.7 L1548.4,1230" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="3V3" d="M1548.4,1084.7 L1548.4,1230" fill="none" stroke="#e03131" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1548.4" cy="1084.7" r="9" fill="#e03131" stroke="#141414" stroke-width="3" />
+<circle cx="1548.4" cy="1230" r="9" fill="#e03131" stroke="#141414" stroke-width="3" />
+<path d="M1604.2,1084.7 L1604.2,1230" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="GND" d="M1604.2,1084.7 L1604.2,1230" fill="none" stroke="#2b2b2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1604.2" cy="1084.7" r="9" fill="#2b2b2b" stroke="#141414" stroke-width="3" />
+<circle cx="1604.2" cy="1230" r="9" fill="#2b2b2b" stroke="#141414" stroke-width="3" />
+<rect x="1445" y="1236" width="206.8" height="190" rx="10" fill="#1864ab" stroke="#0b3d6e" stroke-width="3" />
+<rect x="1475" y="1302" width="146.8" height="110" rx="8" fill="#4dabf7" stroke="#1c7ed6" stroke-width="3" />
+<line x1="1489" y1="1322" x2="1607.7" y2="1322" stroke="#1c7ed6" stroke-width="3" stroke-linecap="round" />
+<line x1="1489" y1="1346" x2="1607.7" y2="1346" stroke="#1c7ed6" stroke-width="3" stroke-linecap="round" />
+<line x1="1489" y1="1370" x2="1607.7" y2="1370" stroke="#1c7ed6" stroke-width="3" stroke-linecap="round" />
+<line x1="1489" y1="1394" x2="1607.7" y2="1394" stroke="#1c7ed6" stroke-width="3" stroke-linecap="round" />
+<rect x="1480.5" y="1232" width="24" height="20" rx="3" fill="#212529" stroke="none" stroke-width="0" />
+<text x="1492.5" y="1280" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle" >S</text>
+<rect x="1536.4" y="1232" width="24" height="20" rx="3" fill="#212529" stroke="none" stroke-width="0" />
+<text x="1548.4" y="1280" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle" >VCC</text>
+<rect x="1592.2" y="1232" width="24" height="20" rx="3" fill="#212529" stroke="none" stroke-width="0" />
+<text x="1604.2" y="1280" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle" >GND</text>
+<text x="1548.4" y="1458" font-size="20" font-weight="700" fill="#1a1a1a" text-anchor="middle" >DHT11 三腳模組（杜邦線）</text>
+<text x="1548.4" y="1486" font-size="17" font-weight="400" fill="#4f5963" text-anchor="middle" >腳序各家不同，照絲印接</text>
+<line x1="877.8" y1="1084.7" x2="877.8" y2="1196.3" stroke="#868e96" stroke-width="5" stroke-linecap="round" />
+<line x1="821.9" y1="1084.7" x2="821.9" y2="1196.3" stroke="#868e96" stroke-width="5" stroke-linecap="round" />
+<rect x="799.9" y="1196.3" width="100" height="22" rx="4" fill="#b197fc" stroke="#5f3dc4" stroke-width="3" />
+<path d="M805.9,1218.3 L805.9,1262.3 A44,44 0 0 0 893.9,1262.3 L893.9,1218.3 Z" fill="#d0bfff" stroke="#5f3dc4" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="819.9" y1="1320.3" x2="801.9" y2="1374.3" stroke="#7048e8" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowIR)"/>
+<line x1="849.9" y1="1320.3" x2="849.9" y2="1374.3" stroke="#7048e8" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowIR)"/>
+<line x1="879.9" y1="1320.3" x2="897.9" y2="1374.3" stroke="#7048e8" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowIR)"/>
+<text x="849.9" y="1410.3" font-size="19" font-weight="700" fill="#1a1a1a" text-anchor="middle" >IR LED 5 mm（940 nm）</text>
+<text x="849.9" y="1436.3" font-size="17" font-weight="400" fill="#4f5963" text-anchor="middle" >腳彎 90°，頭朝外殼 IR 窗</text>
+<text x="765.9" y="1246.3" font-size="16" font-weight="700" fill="#c2410c" text-anchor="end" >＋陽極（長腳）</text>
+<text x="765.9" y="1268.3" font-size="16" font-weight="700" fill="#c2410c" text-anchor="end" >插 J16</text>
+<text x="933.8" y="1246.3" font-size="16" font-weight="700" fill="#1a1a1a" text-anchor="start" >－陰極（短腳）</text>
+<text x="933.8" y="1268.3" font-size="16" font-weight="700" fill="#1a1a1a" text-anchor="start" >插 J15</text>
+<line x1="1045.4" y1="581.8" x2="1045.4" y2="560.5" stroke="#868e96" stroke-width="5" stroke-linecap="round" />
+<line x1="989.6" y1="581.8" x2="989.6" y2="560.5" stroke="#868e96" stroke-width="5" stroke-linecap="round" />
+<line x1="933.7" y1="581.8" x2="933.7" y2="560.5" stroke="#868e96" stroke-width="5" stroke-linecap="round" />
+<rect x="915.2" y="407.4" width="148.6" height="153.1" rx="10" fill="#343a40" stroke="#111" stroke-width="3" />
+<circle cx="989.6" cy="457.4" r="30" fill="#495057" stroke="#adb5bd" stroke-width="3" />
+<text x="989.6" y="463.4" font-size="16" font-weight="700" fill="#f1f3f5" text-anchor="middle" >鏡頭</text>
+<text x="933.7" y="546.5" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" >OUT</text>
+<text x="989.6" y="546.5" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" >GND</text>
+<text x="1045.4" y="546.5" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" >VCC</text>
+<text x="1366.7" y="500" font-size="16" font-weight="700" fill="#5f3dc4" text-anchor="end" >A6</text>
+<text x="1505.5" y="1161.3" font-size="16" font-weight="700" fill="#1864ab" text-anchor="start" >J4</text>
+<text x="1561.4" y="1161.3" font-size="16" font-weight="700" fill="#c92a2a" text-anchor="start" >J3</text>
+<text x="1617.2" y="1161.3" font-size="16" font-weight="700" fill="#1a1a1a" text-anchor="start" >J2</text>
+<text x="682.1" y="467.6" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="end" ><tspan font-weight="700">VS1838B：平躺、鏡頭朝上蓋</tspan></text>
+<text x="682.1" y="517.9" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="end" ><tspan fill="#5f3dc4" font-weight="700">C14 OUT</tspan><tspan >、C13 GND、</tspan><tspan fill="#c92a2a" font-weight="700">C12 VCC</tspan></text>
+<text x="682.1" y="565.4" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="end" ><tspan fill="#4f5963">（腳序以實物為準）</tspan></text>
+<text x="682.1" y="643.6" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="end" ><tspan fill="#4f5963">D12–D14：10 kΩ 上拉（選配）</tspan></text>
+<text x="682.1" y="699.5" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="end" ><tspan fill="#5f3dc4" font-weight="700">E14</tspan><tspan font-weight="700">、E13、</tspan><tspan fill="#c92a2a" font-weight="700">E12</tspan></text>
+<text x="682.1" y="867.2" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="end" ><tspan font-weight="700">F13</tspan><tspan >（短線跨溝接 E13）</tspan></text>
+<text x="682.1" y="923" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="end" ><tspan fill="#2b8a3e" font-weight="700">G17</tspan><tspan font-weight="700">、G15、G13</tspan></text>
+<text x="682.1" y="978.9" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="end" ><tspan font-weight="700">H16–H17：220 Ω（直驅）</tspan></text>
+<text x="682.1" y="1034.8" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="end" ><tspan fill="#4f5963">I16–I17：220 Ω 並聯（選配）</tspan><tspan font-weight="700">、I13</tspan></text>
+<text x="682.1" y="1090.7" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="end" ><tspan font-weight="700">J16＝LED 陽極、J15＝陰極</tspan></text>
+<text x="1744.1" y="978.9" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan fill="#c92a2a" font-weight="700">H3</tspan><tspan >：3V3 → E12</tspan></text>
+<text x="1744.1" y="1034.8" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan font-weight="700">I2</tspan><tspan >：GND → I13</tspan></text>
+<text x="1744.1" y="1090.7" font-size="17" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan fill="#2b8a3e" font-weight="700">J5</tspan><tspan >：GPIO3 → G17</tspan></text>
+<text x="1140.4" y="336.7" font-size="20" font-weight="400" fill="#1a1a1a" text-anchor="middle" ><tspan fill="#5f3dc4" font-weight="700">紫：GPIO10（左排 #6，A6）</tspan><tspan >→ 外緣繞過 → E14 → 接收頭 OUT（C14）</tspan></text>
+<text x="1765.1" y="695.4" font-size="22" font-weight="700" fill="#1a1a1a" text-anchor="start" >USB-C → 朝右</text>
+<text x="1765.1" y="725.4" font-size="18" font-weight="400" fill="#4f5963" text-anchor="start" >（外殼 USB 開口）</text>
+<rect x="28" y="170" width="352" height="660" rx="12" fill="#f8f9fa" stroke="#ced4da" stroke-width="2" />
+<text x="48" y="210" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >怎麼看這張圖</text>
+<text x="48" y="254" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 照外殼擺法從上往下看：</text>
+<text x="69" y="300" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >USB-C 朝右，第 1 行在右</text>
+<text x="48" y="346" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 行號 1–17、排 A–J 照板上絲印</text>
+<text x="48" y="392" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 同一行 A–E 五孔相通、F–J</text>
+<text x="69" y="438" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >五孔相通；中溝兩邊不通</text>
+<text x="48" y="484" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 沒有電源排：C3 的 G2＝GND、</text>
+<text x="69" y="530" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >G3＝3V3，由那一行分出去</text>
+<text x="48" y="576" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• C3 跨中溝：左排插 C1–C8、</text>
+<text x="69" y="622" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >右排插 G1–G8（#1 在 USB 端）</text>
+<text x="48" y="668" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 灰斜線腳＝避開，金色＝可用</text>
+<text x="48" y="714" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 虛線元件＝選配</text>
+<text x="48" y="760" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 線色只是建議，孔位才是重點</text>
+<rect x="1990" y="170" width="422" height="330" rx="12" fill="#f8f9fa" stroke="#ced4da" stroke-width="2" />
+<text x="2010" y="210" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >腳位圖例</text>
+<circle cx="2030" cy="250" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="2030" cy="250" r="20" fill="none" stroke="#2f9e44" stroke-width="5" />
+<circle cx="2030" cy="250" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="2062" y="256" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >已使用（外圈＝線色）</text>
+<circle cx="2030" cy="302" r="15" fill="url(#hatchAvoid)" stroke="#495057" stroke-width="3" />
+<circle cx="2030" cy="302" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="2062" y="308" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >避開：strapping／LED／BOOT／UART0</text>
+<circle cx="2030" cy="354" r="15" fill="#d4a72c" stroke="#8c6d12" stroke-width="3" />
+<circle cx="2030" cy="354" r="6" fill="#3b3b3b" stroke="none" stroke-width="0" />
+<text x="2062" y="360" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >未使用（保留）</text>
+<rect x="2020" y="394" width="14" height="14" rx="2" fill="#57534b" stroke="none" stroke-width="0" />
+<text x="2062" y="408" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >麵包板孔（線端圓點＝孔中心）</text>
+<rect x="2012" y="438" width="30" height="22" rx="0" fill="url(#hatchKeep)" stroke="#e03131" stroke-width="2" />
+<text x="2062" y="456" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >天線淨空：前方 8 mm 不放零件</text>
+<rect x="1990" y="520" width="422" height="420" rx="12" fill="#fff9db" stroke="#f2c94c" stroke-width="2" />
+<text x="2010" y="560" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >哪一行當電源線用</text>
+<text x="2010" y="604" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan >第 2 行下半（G2–J2）＝ </tspan><tspan font-weight="700">GND</tspan></text>
+<text x="2030" y="644" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >H2 空、I2→I13、J2→DHT</text>
+<text x="2010" y="684" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan >第 3 行下半＝ </tspan><tspan fill="#c92a2a" font-weight="700">3V3</tspan></text>
+<text x="2030" y="724" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >H3→E12、J3→DHT、I3 空</text>
+<text x="2010" y="764" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan >第 13 行上下兩半＝ </tspan><tspan font-weight="700">GND</tspan></text>
+<text x="2030" y="804" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >F13–E13 跨溝短線接通</text>
+<text x="2010" y="844" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan >第 15 行下半＝ </tspan><tspan font-weight="700">GND</tspan><tspan >（LED 陰極）</tspan></text>
+<text x="2010" y="884" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan >第 12 行上半＝ </tspan><tspan fill="#c92a2a" font-weight="700">3V3</tspan><tspan >（接收頭）</tspan></text>
+<rect x="28" y="1540" width="900" height="820" rx="12" fill="#f8f9fa" stroke="#ced4da" stroke-width="2" />
+<text x="50" y="1584" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >接線對照（孔位 → 孔位；線色只是建議）</text>
+<path d="M56,1633 L120,1633" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="legend" d="M56,1633 L120,1633" fill="none" stroke="#2b2b2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="140" y="1640" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan font-weight="700">GND</tspan><tspan >：DHT 黑線 J2；I2 → I13；F13 → E13；G13 → G15</tspan></text>
+<path d="M56,1685 L120,1685" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="legend" d="M56,1685 L120,1685" fill="none" stroke="#e03131" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="140" y="1692" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan fill="#c92a2a" font-weight="700">3V3</tspan><tspan >：DHT 紅線 J3；H3 → E12（接收頭 VCC 那一行）</tspan></text>
+<path d="M56,1737 L120,1737" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="legend" d="M56,1737 L120,1737" fill="none" stroke="#1971c2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="140" y="1744" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan fill="#1864ab" font-weight="700">GPIO4</tspan><tspan >：DHT 的 S／DATA 線 → J4</tspan></text>
+<path d="M56,1789 L120,1789" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="legend" d="M56,1789 L120,1789" fill="none" stroke="#2f9e44" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="140" y="1796" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan fill="#2b8a3e" font-weight="700">GPIO3</tspan><tspan >：J5 → G17 → 220 Ω（H17–H16）→ LED 陽極 J16</tspan></text>
+<path d="M56,1841 L120,1841" fill="none" stroke="#141414" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="wire" data-net="legend" d="M56,1841 L120,1841" fill="none" stroke="#7048e8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="140" y="1848" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan fill="#5f3dc4" font-weight="700">GPIO10</tspan><tspan >：A6 → E14（接收頭 OUT 那一行）</tspan></text>
+<text x="50" y="1924" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >零件腳（直接插板）</text>
+<text x="50" y="1968" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• C3：左排 C1–C8、右排 G1–G8（#1 在第 1 行、USB 端）</text>
+<text x="50" y="2012" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• VS1838B：C12＝VCC、C13＝GND、C14＝OUT（平躺、腳朝中溝；</text>
+<text x="71" y="2056" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >腳序以實物為準，常見正面腳朝下由左到右 OUT、GND、VCC）</text>
+<text x="50" y="2100" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• IR LED：陽極（長腳）J16、陰極（短腳／平邊）J15</text>
+<text x="50" y="2144" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 220 Ω：H16–H17（直驅約 9 mA，約 1 m）</text>
+<text x="50" y="2188" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 選配：第二顆 220 Ω 插 I16–I17 並聯（約 18 mA，最多兩顆）</text>
+<text x="50" y="2232" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 選配：10 kΩ 插 D12–D14，當接收頭 OUT 的上拉</text>
+<text x="50" y="2276" font-size="19" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 1 kΩ 現在用不到，留給電晶體升級版</text>
+<rect x="950" y="1540" width="700" height="820" rx="12" fill="#f8f9fa" stroke="#ced4da" stroke-width="2" />
+<text x="972" y="1584" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >之後升級：NPN 電晶體版（距離較遠）</text>
+<text x="972" y="1620" font-size="19" font-weight="700" fill="#1a1a1a" text-anchor="start" >S8050 或 2N2222 </text>
+<rect x="1146" y="1600" width="92" height="30" rx="6" fill="#ffe3e3" stroke="#e03131" stroke-width="2" />
+<text x="1192" y="1621" font-size="18" font-weight="700" fill="#c92a2a" text-anchor="middle" >需補料</text>
+<text x="1252" y="1620" font-size="19" font-weight="400" fill="#4f5963" text-anchor="start" >；韌體不用改</text>
+<text x="1180" y="1676" font-size="19" font-weight="700" fill="#c2410c" text-anchor="middle" >5V（右排 #1，G1 那一行）</text>
+<line x1="1180" y1="1688" x2="1180" y2="1712" stroke="#f76707" stroke-width="5" stroke-linecap="round" />
+<line x1="1120" y1="1712" x2="1240" y2="1712" stroke="#f76707" stroke-width="5" stroke-linecap="round" />
+<line x1="1120" y1="1712" x2="1120" y2="1736" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<rect x="1107" y="1736" width="26" height="60" rx="3" fill="#ffffff" stroke="#1a1a1a" stroke-width="3" />
+<line x1="1120" y1="1796" x2="1120" y2="1820" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<line x1="1180" y1="1712" x2="1180" y2="1736" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<rect x="1167" y="1736" width="26" height="60" rx="3" fill="#ffffff" stroke="#1a1a1a" stroke-width="3" />
+<line x1="1180" y1="1796" x2="1180" y2="1820" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<line x1="1240" y1="1712" x2="1240" y2="1736" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<rect x="1227" y="1736" width="26" height="60" rx="3" fill="#ffffff" stroke="#1a1a1a" stroke-width="3" />
+<line x1="1240" y1="1796" x2="1240" y2="1820" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<line x1="1120" y1="1820" x2="1240" y2="1820" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<text x="1264" y="1764" font-size="18" font-weight="700" fill="#1a1a1a" text-anchor="start" >3 × 220 Ω 並聯</text>
+<text x="1264" y="1788" font-size="18" font-weight="400" fill="#4f5963" text-anchor="start" >（≈ 73 Ω）</text>
+<line x1="1180" y1="1820" x2="1180" y2="1850" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<path d="M1154,1850 L1206,1850 L1180,1890 Z" fill="#d0bfff" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+<line x1="1154" y1="1892" x2="1206" y2="1892" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<text x="1264" y="1878" font-size="18" font-weight="700" fill="#1a1a1a" text-anchor="start" >IR LED（陽極在上）</text>
+<line x1="1180" y1="1892" x2="1180" y2="1950" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<text x="1194" y="1940" font-size="18" font-weight="700" fill="#1a1a1a" text-anchor="start" >C</text>
+<circle cx="1170" cy="1990" r="46" fill="#ffffff" stroke="#1a1a1a" stroke-width="3" />
+<line x1="1150" y1="1960" x2="1150" y2="2020" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round" />
+<line x1="1150" y1="1978" x2="1180" y2="1950" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<line x1="1150" y1="2002" x2="1180" y2="2030" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<line x1="1180" y1="2030" x2="1180" y2="2080" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<text x="1194" y="2052" font-size="18" font-weight="700" fill="#1a1a1a" text-anchor="start" >E</text>
+<text x="1180" y="2106" font-size="19" font-weight="700" fill="#1a1a1a" text-anchor="middle" >GND</text>
+<line x1="1150" y1="1990" x2="1090" y2="1990" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+<text x="1132" y="1980" font-size="18" font-weight="700" fill="#1a1a1a" text-anchor="middle" >B</text>
+<rect x="1020" y="1978" width="70" height="24" rx="3" fill="#ffffff" stroke="#1a1a1a" stroke-width="3" />
+<text x="1055" y="1965" font-size="18" font-weight="700" fill="#1a1a1a" text-anchor="middle" >1 kΩ</text>
+<line x1="1020" y1="1990" x2="990" y2="1990" stroke="#2f9e44" stroke-width="5" stroke-linecap="round" />
+<text x="984" y="1997" font-size="19" font-weight="700" fill="#2b8a3e" text-anchor="end" >GPIO3</text>
+<text x="1240" y="1996" font-size="18" font-weight="700" fill="#1a1a1a" text-anchor="start" >NPN（TO-92）</text>
+<text x="1240" y="2020" font-size="17" font-weight="400" fill="#4f5963" text-anchor="start" >E／B／C 腳序依廠牌</text>
+<text x="972" y="2160" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• LED 約 45–50 mA，比直驅（約 9 mA）遠很多</text>
+<text x="972" y="2202" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 建議另加 10 kΩ 接在 B 與 E 之間（手上有）</text>
+<text x="972" y="2244" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• LM337LZ 長得像電晶體，但是穩壓 IC，不能代用</text>
+<text x="972" y="2286" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 補料到貨後再排孔位；現在的直驅線路不用動</text>
+<rect x="1672" y="1540" width="740" height="820" rx="12" fill="#fff9db" stroke="#f2c94c" stroke-width="2" />
+<text x="1694" y="1584" font-size="24" font-weight="700" fill="#1a1a1a" text-anchor="start" >注意事項</text>
+<text x="1694" y="1636" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" ><tspan >• DHT11 的 VCC 接 </tspan><tspan fill="#c92a2a" font-weight="700">3V3（J3）</tspan><tspan >，不要接 5V</tspan></text>
+<text x="1714" y="1680" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >模組上拉接在 VCC，接 5V 會把 5V 灌進 GPIO</text>
+<text x="1694" y="1724" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 第 1 行下半（H1–J1）是 5V：不要插任何東西</text>
+<text x="1694" y="1768" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 先拔 USB 再插線、改線</text>
+<text x="1694" y="1812" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• C3 兩排距 6 格（15.24 mm）：C 排與 G 排</text>
+<text x="1694" y="1856" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 接收頭只接 3V3，OUT 才不會超過 3.3 V</text>
+<text x="1694" y="1900" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• LED 長腳＝陽極（J16）；插反只是不亮，不會壞</text>
+<text x="1694" y="1944" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• LED 與接收頭方向不同（側窗 vs 上蓋），</text>
+<text x="1714" y="1988" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >減少自己發的訊號被自己收到</text>
+<text x="1694" y="2032" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 天線端（左邊紅框）不放零件；第 12 行在</text>
+<text x="1714" y="2076" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >8 mm 邊界上，接收頭是外殼定稿位置</text>
+<text x="1694" y="2120" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 麵包板：SYB-170，約 47 × 35 × 8.5 mm</text>
+<text x="1714" y="2164" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >（孔距 2.54 mm；尺寸到貨再量）</text>
+<text x="1694" y="2208" font-size="18" font-weight="400" fill="#1a1a1a" text-anchor="start" >• 板上字樣若左右相反，見 PINMAP_R3.md</text>
+<text x="2404" y="2384" font-size="18" font-weight="400" fill="#4f5963" text-anchor="end" >板圖自繪，CC0-1.0</text>
+</svg>

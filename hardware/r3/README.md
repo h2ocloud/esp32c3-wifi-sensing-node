@@ -27,7 +27,9 @@ R3 是為 170 孔迷你麵包板設計的兩件式外殼：**黑色殼身＋白�
 | `stl/angle/plate/`、`stl/angle/assembled/` | 薄版的同一組檔案 |
 | `img/` | 算繪圖（薄版）：`01_iso_closed.png`（閉合）、`02_top_open.png`（開蓋俯視）、`03_breadboard.png`（麵包板擺位） |
 | `check/` | `r3_check.txt`（兩版各 37 項檢查，全部通過）、`r3_negative_controls.txt`（14 組負向對照） |
-| `wiring/` | 麵包板接線圖（PNG＋SVG）；**還沒放進來**，之後補上 |
+| `wiring/` | 麵包板接線圖：[`wiring_r3_breadboard.png`](wiring/wiring_r3_breadboard.png)、[`wiring_r3_breadboard.svg`](wiring/wiring_r3_breadboard.svg)；腳位表 [`PINMAP_R3.md`](wiring/PINMAP_R3.md)；`src/`（產生接線圖的腳本） |
+
+**LED 擺法以外殼為準**：直立、朝蓋上的窗（R3 外殼只有蓋上有 IR 窗）；接線圖上「腳彎 90°、朝側窗」的標註與外殼不一致，已回報待更新，電路接法不受影響。
 
 G-code 與 STEP 不放在 git；等 G-code 到齊後，附在 Release v0.2.0。
 

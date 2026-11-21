@@ -149,7 +149,7 @@ esphome run wifi-node.yaml             # 第一次用 USB 燒錄；之後可 OTA
 | 零件表 | `bom/BOM.md` | `bom/BOM_R3.md` |
 
 - **腳位**：DHT11 DATA＝**GPIO4**（VCC 接 3V3、GND）；IR 發射＝**GPIO3**（直驅與電晶體版同腳）、IR 接收（VS1838B OUT）＝**GPIO10**；5V 只有電晶體版的 LED 用。麵包板孔位見 [`docs/BREADBOARD_R3.md`](docs/BREADBOARD_R3.md)。
-- **需補料（不代購）**：NPN 電晶體（S8050 或 2N2222）**只有升級成電晶體版才需要**；麵包板跳線約 7 條，手上沒有就補；高版的 DHT11 要用公母杜邦線，模組附的若是母對母，另補 3 條公母線。
+- **需補料（不代購）**：NPN 電晶體（S8050 或 2N2222）**只有升級成電晶體版才需要**；麵包板跳線 6 條（直驅版；電晶體版之後另加 1 條 5V 線），手上沒有就補；高版的 DHT11 要用公母杜邦線，模組附的若是母對母，另補 3 條公母線。
 - **紅外線發射兩版**：預設**直驅版**（GPIO3 → 220 Ω → LED，約 9 mA、距離約 1 m，用手上現有的電阻）；補到 NPN 後原位升級成**電晶體版**（基極 1 kΩ、5V 經 3 顆 220 Ω 並聯，約 45–50 mA）。韌體不用改。計算與限制見 [`docs/BREADBOARD_R3.md`](docs/BREADBOARD_R3.md) 第 5 節。
 - **完整說明**（零件、腳位、麵包板插法、DHT11 與 AHT20 的差異、外殼、到貨要量）：[`docs/BREADBOARD_R3.md`](docs/BREADBOARD_R3.md)；紅外線學碼照 [`docs/IR_HITACHI.md`](docs/IR_HITACHI.md)（腳位同 R2）。
 - 編譯結果（ESPHome 2026.10.2）：RAM 34.2%、Flash 59.9%（比 R2 少約 19 KB flash）。
